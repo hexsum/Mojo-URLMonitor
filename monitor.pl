@@ -71,6 +71,7 @@ while(1){
             _log("git pushed") :
             _log("git pushed fail $!")
         ;
+        $is_need_push = 0;
         $commit_message = "";
     }
     sleep 3600;
