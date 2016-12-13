@@ -4,7 +4,6 @@ use Mojo::UserAgent;
 use Mojo::UserAgent::Proxy;
 use Mojo::UserAgent::Transactor;
 use JavaScript::Beautifier;
-use Storable ();
 use Mojo::Util ();
 use POSIX ();
 
