@@ -25,6 +25,7 @@ sub _log{
     return $log;
 }
 
+$| = 1;
 my $is_need_push = 0 ;
 my $commit_message = '';
 while(1){
