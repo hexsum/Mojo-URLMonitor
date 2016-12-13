@@ -14,10 +14,11 @@ my $ua = Mojo::UserAgent->new(
         name       => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062'
     ),
 );
+
 my @list = (
     {url=>'https://ui.ptlogin2.qq.com/js/10185/mq_comm.js',path=>'./smartqq/mq_comm.js'},
     {url=>'http://pub.idqqimg.com/smartqq/js/mq.js',path=>'./smartqq/mq.js'},
-    {url=>'https://res.wx.qq.com/zh_CN/htmledition/v2/js/webwxApp31e225.js',path=>'./weixin/webwxApp31e225.js'},
+    {url=>'https://wx.qq.com/',path=>'./weixin/webwxApp.js'},
 );
 sub _log{
     my $log = POSIX::strftime('%Y/%m/%d %H:%M:%S ',localtime()) . join("",@_) . "\n";
@@ -40,6 +41,20 @@ while(1){
                 die "Connection error: $err->{message}";
             }
             my $data = $tx->res->body;
+            if($url eq 'https://wx.qq.com/'){
+                $data=~m#<script type="text/javascript" src="(https://res\.wx\.qq\.com/.*?/webwxApp.*?\.js)"></script>#;
+                if($1){
+                    $url = $1;
+                    $tx = $ua->get($url);
+                    if (!$tx->success) {
+                        my $err = $tx->error;
+                        die "$err->{code} response: $err->{message}" if $err->{code};
+                        die "Connection error: $err->{message}";
+                    }
+                    $data = $tx->res->body;
+                }
+                else{die "[webwxApp.js] url not found"}
+            }
             if($tx->res->headers->content_type =~/^(text|application)\/(x-)?javascript/){
                 $data = JavaScript::Beautifier::js_beautify($data); 
             }
@@ -52,7 +67,7 @@ while(1){
                 }
                 else{
                     Mojo::Util::spurt($data,$path);
-                    my $log =_log "[$path] changed";
+                    my $log =_log "[$path] changed $new_lm";
                     $is_need_push = 1;
                     $commit_message .= "\n$log";
                 }

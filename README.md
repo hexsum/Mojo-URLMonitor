@@ -3,4 +3,4 @@
 # 当前已添加监控的文件列表
 * ./smartqq/mq_comm.js
 * ./smartqq/mq.js
-* ./weixin/webwxApp31e225.js
+* ./weixin/webwxApp.js
