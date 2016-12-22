@@ -8661,7 +8661,10 @@ define('mq.model.chat', ["./mq.portal"], function() {
                 case "group_message":
                     var from_group = packageContext.m_model.getGroupByGid(from_uin);
                     var send_user = packageContext.m_model.getFriendByUin(msg.send_uin);
-
+                    if (send_user === undefined) {
+                        console.log('from uin is undefined');
+                        return;
+                    }
                     //群聊天展示群昵称
                     var from_group_members = from_group.members || [];
                     var membersLen = from_group_members.length || 0;
@@ -9331,7 +9334,7 @@ define('tmpl!../tmpl/tmpl_chat_list.html', [], function() {
                 }
                 __p += '\r\n\r\n<div class="chat_content_group ' + ((__t = (item.sender_uin == selfUin ? 'self' : 'buddy')) == null ? '' : __t) + ' ' + ((__t = (sender ? '' : 'need_update')) == null ? '' : __t) + ' ' + ((__t = (item.system ? 'system' : '')) == null ? '' : __t) + '" _sender_uin="' + ((__t = (item.sender_uin)) == null ? '' : __t) + '">\r\n    ';
                 if (!item.system) {
-                    __p += '\r\n    <img class="chat_content_avatar" src="' + ((__t = (sender ? sender.avatar : '')) == null ? '' : __t) + '" width="40px" height="40px">\r\n    ';
+                    __p += '\r\n    <img class="chat_content_avatar" src="' + ((__t = (sender ? sender.avatar : '')) == null ? '' : __t) + '" width="40px" height="40px" onerror="javascript:this.src=\'/css/image/avatar_default.jpg\'">\r\n    ';
                     if (item.from_group && sender && sender.cardName) {
                         __p += '\r\n        <p class="chat_nick">' + ((__t = (html(sender.cardName + ''))) == null ? '' : __t) + '</p>\r\n    ';
                     } else {
