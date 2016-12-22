@@ -7865,6 +7865,7 @@ define('mq.model.memberlist', ["./mq.i18n", "./mq.portal", "./mq.report"], funct
                 this.province = option.province;
 
                 this.avatar = this.getAvatar();
+
                 this.category = option.category;
 
                 this.group = option.group;
@@ -7961,7 +7962,14 @@ define('mq.model.memberlist', ["./mq.i18n", "./mq.portal", "./mq.report"], funct
         this.getAvatar = function(uin, type) {
             type = type || 1; // 群图标为 4
             var t = mq.vfwebqq;
-            return 'http://face' + (uin % 10) + '.web.qq.com/cgi/svr/face/getface?cache=1&type=' + type + '&f=40&uin=' + uin + '&t=' + Math.floor(new Date() / 1000) + '&vfwebqq=' + t;
+            var url = 'http://face' + (uin % 10) + '.web.qq.com/cgi/svr/face/getface?cache=1&type=' + type + '&f=40&uin=' + uin + '&t=' + Math.floor(new Date() / 1000) + '&vfwebqq=' + t;
+
+            return url;
+        };
+
+        this.getSelfAvatar = function(uin) {
+            return 'http://q.qlogo.cn/g?b=qq&nk=' + uin + '&s=100&t=' + Date.now();
+
         };
 
         //获取联系人
@@ -8327,7 +8335,7 @@ define('mq.model.memberlist', ["./mq.i18n", "./mq.portal", "./mq.report"], funct
         //设置本人个人资料
         this.setSelfInfo = function(info) {
             info.name = info.nick;
-            info.avatar = this.getAvatar(selfUin);
+            info.avatar = this.getSelfAvatar(selfUin);
             info.isSelf = true;
             selfInfo = info;
             $E.fire(pageContext, 'getFirstSelfInfo', selfInfo);
@@ -8628,6 +8636,7 @@ define('mq.model.chat', ["./mq.portal"], function() {
                 var msg = pollMsg.value;
                 var from_uin = msg.from_uin;
                 var senderMsgObj = null;
+
                 switch (pollMsg.poll_type) {
                     //好友，陌生人等消息
                 case "sess_message":
@@ -10753,7 +10762,13 @@ define('tmpl!../tmpl/tmpl_member_list.html', [], function() {
                 __p += '\r\n';
                 for (i = 0; item = list[i]; i++) {
 
-                    __p += '\r\n<li id="' + ((__t = (prefix ? (prefix + '-') : '')) == null ? '' : __t) + 'item-' + ((__t = (item.type + '-' + item.account)) == null ? '' : __t) + '" class="list_item" _uin="' + ((__t = (item.account)) == null ? '' : __t) + '" _type="' + ((__t = (item.type)) == null ? '' : __t) + '" cmd="clickMemberItem">\r\n    <a href="javascript:void(0);" class="avatar" cmd="clickMemberAvatar" _uin="' + ((__t = (item.account)) == null ? '' : __t) + '" _type="' + ((__t = (item.type)) == null ? '' : __t) + '"><img  src="/css/image/avatar_default_40_40.gif" _ori_src="' + ((__t = (item.avatar)) == null ? '' : __t) + '" >\r\n        ';
+                    __p += '\r\n<li id="' + ((__t = (prefix ? (prefix + '-') : '')) == null ? '' : __t) + 'item-' + ((__t = (item.type + '-' + item.account)) == null ? '' : __t) + '" class="list_item" _uin="' + ((__t = (item.account)) == null ? '' : __t) + '" _type="' + ((__t = (item.type)) == null ? '' : __t) + '" cmd="clickMemberItem">\r\n    <a href="javascript:void(0);" class="avatar" cmd="clickMemberAvatar" _uin="' + ((__t = (item.account)) == null ? '' : __t) + '" _type="' + ((__t = (item.type)) == null ? '' : __t) + '">\r\n        ';
+                    if (item.type === 'group') {
+                        __p += '\r\n            <img src="/css/image/avatar_group_default.jpg" _ori_src="' + ((__t = (item.avatar)) == null ? '' : __t) + '" >\r\n        ';
+                    } else {
+                        __p += '\r\n            <img src="/css/image/avatar_default.jpg" _ori_src="' + ((__t = (item.avatar)) == null ? '' : __t) + '" >\r\n        ';
+                    }
+                    __p += '\r\n\r\n        ';
                     if (item.mask) {
                         __p += '\r\n        <span class="group_mask" />\r\n        ';
                     }
@@ -13374,7 +13389,12 @@ define('mq.view.desktopNotificationManager', ['jm'], function() {
                     }
 
                     if (noti.removeEventListener) {
-                        noti.removeEventListener(eventType);
+                        try {
+                            noti.removeEventListener(eventType, handler);
+                        } catch(e) {
+                            console.log('解绑桌面提醒成功');
+                        }
+
                     }
                     else {
                         noti['on' + eventType] = null;
