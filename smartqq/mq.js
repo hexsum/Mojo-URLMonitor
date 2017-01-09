@@ -9334,7 +9334,7 @@ define('tmpl!../tmpl/tmpl_chat_list.html', [], function() {
                 }
                 __p += '\r\n\r\n<div class="chat_content_group ' + ((__t = (item.sender_uin == selfUin ? 'self' : 'buddy')) == null ? '' : __t) + ' ' + ((__t = (sender ? '' : 'need_update')) == null ? '' : __t) + ' ' + ((__t = (item.system ? 'system' : '')) == null ? '' : __t) + '" _sender_uin="' + ((__t = (item.sender_uin)) == null ? '' : __t) + '">\r\n    ';
                 if (!item.system) {
-                    __p += '\r\n    <img class="chat_content_avatar" src="' + ((__t = (sender ? sender.avatar : '')) == null ? '' : __t) + '" width="40px" height="40px" onerror="javascript:this.src=\'/css/image/avatar_default.jpg\'">\r\n    ';
+                    __p += '\r\n    <img class="chat_content_avatar" src="' + ((__t = (sender ? sender.avatar : '')) == null ? '' : __t) + '" width="40px" height="40px" onerror="javascript:this.src=\'//p.qpic.cn/qqstory_pic/Q3auHgzwzM6cKtDbXYoDPPiadPGhwqWFHoWAesSD3ZJiceM5qUOmyqjFyhXh0icFVsGWEjVJRatg90/\'">\r\n    ';
                     if (item.from_group && sender && sender.cardName) {
                         __p += '\r\n        <p class="chat_nick">' + ((__t = (html(sender.cardName + ''))) == null ? '' : __t) + '</p>\r\n    ';
                     } else {
@@ -10767,9 +10767,9 @@ define('tmpl!../tmpl/tmpl_member_list.html', [], function() {
 
                     __p += '\r\n<li id="' + ((__t = (prefix ? (prefix + '-') : '')) == null ? '' : __t) + 'item-' + ((__t = (item.type + '-' + item.account)) == null ? '' : __t) + '" class="list_item" _uin="' + ((__t = (item.account)) == null ? '' : __t) + '" _type="' + ((__t = (item.type)) == null ? '' : __t) + '" cmd="clickMemberItem">\r\n    <a href="javascript:void(0);" class="avatar" cmd="clickMemberAvatar" _uin="' + ((__t = (item.account)) == null ? '' : __t) + '" _type="' + ((__t = (item.type)) == null ? '' : __t) + '">\r\n        ';
                     if (item.type === 'group') {
-                        __p += '\r\n            <img src="/css/image/avatar_group_default.jpg" _ori_src="' + ((__t = (item.avatar)) == null ? '' : __t) + '" >\r\n        ';
+                        __p += '\r\n            <img src="//p.qpic.cn/qqstory_pic/Q3auHgzwzM6cKtDbXYoDPKflKJ1nXkTzl7vmDO5u8zgV1MIob0COcRLCbqia6ia82NEqNDyhI5DfE/" _ori_src="' + ((__t = (item.avatar)) == null ? '' : __t) + '" >\r\n        ';
                     } else {
-                        __p += '\r\n            <img src="/css/image/avatar_default.jpg" _ori_src="' + ((__t = (item.avatar)) == null ? '' : __t) + '" >\r\n        ';
+                        __p += '\r\n            <img src="//p.qpic.cn/qqstory_pic/Q3auHgzwzM6cKtDbXYoDPPiadPGhwqWFHoWAesSD3ZJiceM5qUOmyqjFyhXh0icFVsGWEjVJRatg90/" _ori_src="' + ((__t = (item.avatar)) == null ? '' : __t) + '" >\r\n        ';
                     }
                     __p += '\r\n\r\n        ';
                     if (item.mask) {
