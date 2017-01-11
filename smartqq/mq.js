@@ -8020,6 +8020,8 @@ define('mq.model.memberlist', ["./mq.i18n", "./mq.portal", "./mq.report"], funct
                         if (data.retcode == 0) {
                             callback();
                             handlers.onGetGroupListSuccess(data.result);
+                        } else {
+                            callback();
                         }
 
                     }
