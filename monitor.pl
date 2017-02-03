@@ -68,14 +68,14 @@ while(1){
                     _log "[$path] unchanged";
                 }
                 else{
-                    Mojo::Util::spurt($data,$path);
+                    spurt($data,$path);
                     my $log =_log "[$path] changed $new_lm";
                     $is_need_push = 1;
                     $commit_message .= "\n$log";
                 }
             }
             else{
-                Mojo::Util::spurt($data,$path);
+                spurt($data,$path);
                 my $log = _log "[$path] created";
                 $is_need_push = 1;
                 $commit_message .= "\n$log";
@@ -100,5 +100,13 @@ sub slurp {
     my $ret = my $content = '';
     while ($ret = $file->sysread(my $buffer, 131072, 0)) { $content .= $buffer }
     Carp::croak qq{Can't read from file "$path": $!} unless defined $ret;
+    return $content;
+}
+
+sub spurt {
+    my ($content, $path) = @_;
+    open my $file, '>', $path or Carp::croak qq{Can't open file "$path": $!};
+    defined $file->syswrite($content)
+        or Carp::croak qq{Can't write to file "$path": $!};
     return $content;
 }
