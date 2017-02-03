@@ -18,7 +18,7 @@ my $ua = Mojo::UserAgent->new(
 my @list = (
     {url=>'https://ui.ptlogin2.qq.com/js/10185/mq_comm.js',path=>'./smartqq/mq_comm.js'},
     {url=>'http://pub.idqqimg.com/smartqq/js/mq.js',path=>'./smartqq/mq.js'},
-    {url=>'https://wx.qq.com/',path=>'./weixin/webwxApp.js'},
+    {url=>'https://wx.qq.com/',path=>'./weixin/index.js'},
 );
 sub _log{
     my $log = POSIX::strftime('%Y/%m/%d %H:%M:%S ',localtime()) . join("",@_) . "\n";
@@ -42,9 +42,10 @@ while(1){
             }
             my $data = $tx->res->body;
             if($url eq 'https://wx.qq.com/'){
-                $data=~m#<script type="text/javascript" src="(https://res\.wx\.qq\.com/.*?/webwxApp.*?\.js)"></script>#;
+                $data=~m#<script .*? src="(.*//res\.wx\.qq\.com/.*?/index_.*?\.js)"></script>#;
                 if($1){
                     $url = $1;
+                    $url = 'https:' . $url if $url!~/^https?:/;
                     $tx = $ua->get($url);
                     if (!$tx->success) {
                         my $err = $tx->error;
@@ -53,7 +54,7 @@ while(1){
                     }
                     $data = $tx->res->body;
                 }
-                else{die "[webwxApp.js] url not found"}
+                else{die "[$url] url not found"}
             }
             if($tx->res->headers->content_type =~/^(text|application)\/(x-)?javascript/){
                 $data = JavaScript::Beautifier::js_beautify($data); 
