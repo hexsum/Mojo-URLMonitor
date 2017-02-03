@@ -5,6 +5,7 @@ use Mojo::UserAgent::Proxy;
 use Mojo::UserAgent::Transactor;
 use JavaScript::Beautifier;
 use Mojo::Util ();
+use Carp;
 use POSIX ();
 
 my $ua = Mojo::UserAgent->new(
@@ -62,7 +63,7 @@ while(1){
             my $new_md5 = Mojo::Util::md5_sum($data); 
             my $new_lm = $tx->res->headers->last_modified;
             if(-f $path){
-                my $old_md5 = Mojo::Util::md5_sum(Mojo::Util::slurp($path));
+                my $old_md5 = Mojo::Util::md5_sum(slurp($path));
                 if ($old_md5 eq $new_md5){
                     _log "[$path] unchanged";
                 }
@@ -91,4 +92,13 @@ while(1){
         $commit_message = "";
     }
     sleep 3600;
+}
+
+sub slurp {
+    my $path = shift;
+    open my $file, '<', $path or Carp::croak qq{Can't open file "$path": $!};
+    my $ret = my $content = '';
+    while ($ret = $file->sysread(my $buffer, 131072, 0)) { $content .= $buffer }
+    Carp::croak qq{Can't read from file "$path": $!} unless defined $ret;
+    return $content;
 }
