@@ -17,7 +17,8 @@ my $ua = Mojo::UserAgent->new(
 );
 
 my @list = (
-    {url=>'https://ui.ptlogin2.qq.com/js/10185/mq_comm.js',path=>'./smartqq/mq_comm.js'},
+    {url=>'https://ui.ptlogin2.qq.com/js/10194/mq_comm.js',path=>'./smartqq/mq_comm.js'},
+    {url=>'http://pub.idqqimg.com/smartqq/js/mq.js',path=>'./smartqq/mq.js'},
     {url=>'http://pub.idqqimg.com/smartqq/js/mq.js',path=>'./smartqq/mq.js'},
     {url=>'https://wx.qq.com/',path=>'./weixin/index.js'},
 );
