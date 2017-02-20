@@ -346,18 +346,7 @@ webpackJsonp([1], {
                                         singletonId: "mmpop_reader_menu",
                                         className: "reader_menu"
                                     })
-                                },
-                                c || $("#reader").load(function() {
-                                    var e = $(this).contents().find("body"),
-                                    t = e.find("#js_view_source");
-                                    if (t.length > 0) {
-                                        e.css({
-                                            position: "relative"
-                                        });
-                                        var a = $('<a href="javascript:;" onclick="var url = window.msg_source_url || window.location.href; var win = window.top.open(url, \'_blank\'); win.focus();" style="position: absolute; bottom: 20px; left: 15px; width: 4em; height: 25px; background: #FFFFFF;">阅读原文</a>');
-                                        e.append(a)
-                                    }
-                                })
+                                }
                             }]
                         }
                     }
@@ -3884,7 +3873,7 @@ webpackJsonp([1], {
                         e
                     },
                     addContact: function(e) {
-                        e && (e.isContact || (e = f(e), e.MMOrderSymbol = this.getContactOrderSymbol(e)), e.EncryChatRoomId && e.UserName && (e.MMFromBatchget = !0), e.RemarkName = e.RemarkName && c.transformSpanToImg(e.RemarkName), e.NickName = e.NickName && c.transformSpanToImg(e.NickName), e.isShieldUser() || !e.isContact() && !e.isRoomContact() ? this.addStrangerContact(e) : this.addFriendContact(e))
+                        e && (e.isContact || (e = f(e), e.MMOrderSymbol = this.getContactOrderSymbol(e)), e.EncryChatRoomId && e.UserName && (e.MMFromBatchget = !0), e.RemarkName = e.RemarkName && c.transformSpanToImg(e.RemarkName), e.NickName = e.NickName && c.transformSpanToImg(e.NickName), e.isShieldUser() || !e.isContact() && !e.isRoomContact() ? this.addStrangerContact(e) : this.addFriendContact(e));
                     },
                     addFriendContact: function(e) {
                         var t, a = this;
@@ -8529,4 +8518,4 @@ webpackJsonp([1], {
         } ()
     }
 });
-/* vhtml-webpack-plugin version: 0.1.8 */
+/* vhtml-webpack-plugin version: 0.1.11 */
