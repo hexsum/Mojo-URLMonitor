@@ -468,7 +468,7 @@ webpackJsonp([1], {
                     })
                 }
                 function N() {
-                    t.debug && (x && a.cancel(x), y.start(4e4), x = a(function() {
+                    t.debug && (V && a.cancel(V), y.start(4e4), V = a(function() {
                         s.syncCheck().then(function(e) {
                             return y.start(5e3),
                             e
@@ -685,7 +685,7 @@ webpackJsonp([1], {
                     })
                 },
                 y.callback(N);
-                var x
+                var V
             }])
         } ()
     },
@@ -1285,8 +1285,8 @@ webpackJsonp([1], {
             "use strict";
             angular.module("Controllers").controller("chatSenderController", ["$rootScope", "$scope", "$http", "$timeout", "ngDialog", "confFactory", "accountFactory", "contactFactory", "chatFactory", "screenShotFactory", "utilFactory", "mmpop", "stateManageService", "emojiFactory", "reportService", function(e, a, n, i, o, c, r, s, l, d, f, u, m, g, p) {
                 function h() {
-                    var e = "undefined" != typeof x.textContent ? x.textContent : x.innerText,
-                    t = x.getElementsByTagName("img").length > 0;
+                    var e = "undefined" != typeof V.textContent ? V.textContent : V.innerText,
+                    t = V.getElementsByTagName("img").length > 0;
                     e.length > 0 || t ? m.change("sender:hasText", !0) : m.change("sender:hasText", !1)
                 }
                 function M() {
@@ -1297,17 +1297,17 @@ webpackJsonp([1], {
                 }
                 function y() {
                     var e, t;
-                    document.createRange ? (e = document.createRange(), e.selectNodeContents(x), e.collapse(!1), t = window.getSelection(), t.removeAllRanges(), t.addRange(e)) : document.selection && (e = document.body.createTextRange(), e.moveToElementText(x), e.collapse(!1), e.select())
+                    document.createRange ? (e = document.createRange(), e.selectNodeContents(V), e.collapse(!1), t = window.getSelection(), t.removeAllRanges(), t.addRange(e)) : document.selection && (e = document.body.createTextRange(), e.moveToElementText(V), e.collapse(!1), e.select())
                 }
                 function b(e) {
                     var t, a, n = "";
                     if (window.getSelection) t = window.getSelection(),
-                    t.rangeCount > 0 && (a = t.getRangeAt(0).cloneRange(), a.collapse(!0), a.setStart(x, 0), n = a.toString().slice(-e));
+                    t.rangeCount > 0 && (a = t.getRangeAt(0).cloneRange(), a.collapse(!0), a.setStart(V, 0), n = a.toString().slice(-e));
                     else if ((t = document.selection) && "Control" != t.type) {
                         var i;
                         a = t.createRange(),
                         i = a.duplicate(),
-                        i.moveToElementText(x),
+                        i.moveToElementText(V),
                         i.setEndPoint("EndToStart", a),
                         n = i.text.slice(-e)
                     }
@@ -1330,15 +1330,15 @@ webpackJsonp([1], {
                         n.setStartAfter(s),
                         a.removeAllRanges(),
                         a.addRange(n);
-                        var l = s.offsetTop - 42 + s.offsetHeight - x.offsetHeight;
-                        x.scrollTop < l && (x.scrollTop = l)
+                        var l = s.offsetTop - 42 + s.offsetHeight - V.offsetHeight;
+                        V.scrollTop < l && (V.scrollTop = l)
                     } else n = t || !P ? document.selection.createRange() : P,
                     e = e.replace(/</gi, "&lt;").replace(/>/gi, "&gt;"),
                     n.pasteHTML(e),
                     n.select()
                 }
                 function w() {
-                    window.getSelection && (window.getSelection().getRangeAt(0).insertNode(A), U = A.offsetLeft, F = A.offsetTop - x.scrollTop, V.appendChild(A))
+                    window.getSelection && (window.getSelection().getRangeAt(0).insertNode(A), U = A.offsetLeft, F = A.offsetTop - V.scrollTop, x.appendChild(A))
                 }
                 function S(t) {
                     var a = o.open({
@@ -1374,8 +1374,8 @@ webpackJsonp([1], {
                     }
                 }
                 function T(e) {
-                    x.innerHTML = a.editAreaCtn = e || "",
-                    x.focus(),
+                    V.innerHTML = a.editAreaCtn = e || "",
+                    V.focus(),
                     h(),
                     m.change("sender:active", !0),
                     e && (y(), M())
@@ -1557,11 +1557,11 @@ webpackJsonp([1], {
                 var I, P, A = document.getElementById("caretPosHelper"),
                 U = 0,
                 F = 0,
-                x = document.getElementById("editArea"),
-                V = x.parentNode,
+                V = document.getElementById("editArea"),
+                x = V.parentNode,
                 D = f.getShareObject("editingContents"),
                 R = !1;
-                $(x).on("input", function() {
+                $(V).on("input", function() {
                     M()
                 }).on("click", function() {
                     M()
@@ -1575,13 +1575,13 @@ webpackJsonp([1], {
                 a.editAreaCtn = "";
                 var j;
                 a.$on("$destroy", function() {
-                    j && (D[j] = x.innerHTML)
+                    j && (D[j] = V.innerHTML)
                 }),
                 a.$watch(function() {
                     return l.getCurrentUserName()
                 },
                 function(e, t) {
-                    t && e != t && (D[t] = x.innerHTML),
+                    t && e != t && (D[t] = V.innerHTML),
                     j = e,
                     T(D[e])
                 }),
@@ -1643,7 +1643,7 @@ webpackJsonp([1], {
                                     insertContactToEditArea: a.insertToEditArea
                                 },
                                 autoFoucs: !1,
-                                container: angular.element(V)
+                                container: angular.element(x)
                             })
                         },
                         !q && L && L(),
@@ -1669,7 +1669,7 @@ webpackJsonp([1], {
                                 i || (n += n)
                             }
                             a.insertToEditArea(n, !0),
-                            x.scrollTop = x.scrollHeight
+                            V.scrollTop = V.scrollHeight
                         } else a.sendTextMessage();
                         e.preventDefault()
                     }
@@ -1696,12 +1696,12 @@ webpackJsonp([1], {
                     }
                 },
                 a.$on("root:quoteMsg", function(e, t) {
-                    T(t + (x.innerHTML.replace("<br>", "") ? x.innerHTML : "<br>")),
-                    x.scrollTop = 9999
+                    T(t + (V.innerHTML.replace("<br>", "") ? V.innerHTML : "<br>")),
+                    V.scrollTop = 9999
                 }),
                 a.insertToEditArea = function(e, t) {
                     C(e, t),
-                    a.editAreaCtn = x.innerHTML
+                    a.editAreaCtn = V.innerHTML
                 },
                 a.sendTuzkiEmoji = function(e, t) {
                     var a = l.createMessage({
@@ -8518,4 +8518,4 @@ webpackJsonp([1], {
         } ()
     }
 });
-/* vhtml-webpack-plugin version: 0.1.11 */
+/* vhtml-webpack-plugin version: 0.1.12 */
