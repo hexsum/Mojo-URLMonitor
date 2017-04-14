@@ -7518,7 +7518,7 @@ define('mq.model.memberlist', ["./mq.i18n", "./mq.portal", "./mq.report"], funct
         GET_GROUP_INFO_CGI_LIST = mq.STATIC_CGI_URL + "api/get_group_info_ext2",
         GET_DISCUSS_INFO_CGI_LIST = mq.DYNAMIC_CGI_URL + "channel/get_discu_info",
         GET_FRIEND_INFO_CGI = mq.STATIC_CGI_URL + "api/get_friend_info2",
-        GET_FRIEND_UIN = mq.STATIC_CGI_URL + "api/get_friend_uin2",
+        // GET_FRIEND_UIN = mq.STATIC_CGI_URL + "api/get_friend_uin2", 这个有安全风险，已停止，20170414vorshen
         GET_ONLINE_BUDDIES = mq.DYNAMIC_CGI_URL + "channel/get_online_buddies2",
         SEND_CHANGE_ONLINE_STATE = mq.DYNAMIC_CGI_URL + "channel/change_status2";
 
@@ -7710,13 +7710,13 @@ define('mq.model.memberlist', ["./mq.i18n", "./mq.portal", "./mq.report"], funct
 
             },
             //获取用户真实uin成功
-            onGetFriendUinSuccess: function(result) {
+            /*onGetFriendUinSuccess:function(result){
                 var userInfo = pageContext.getFriendByUin(result.uin);
-                if (userInfo) {
+                if(userInfo){
                     userInfo.ruin = result.account;
                     $E.fire(pageContext, "friendInfoUpdate", userInfo);
                 }
-            },
+            },*/
             //获取群列表成功
             onGetGroupListSuccess: function(group_list) {
                 //设置群数据
@@ -8139,28 +8139,24 @@ define('mq.model.memberlist', ["./mq.i18n", "./mq.portal", "./mq.report"], funct
             });
         };
         //获取好友真实QQ号
-        this.sendGetFriendUin = function(uin) {
+        /*this.sendGetFriendUin = function(uin){
             var param = {};
             param.tuin = uin; //uin
             param.type = 1;
-            /*
-               param.verifysession = J.cookie.get("verifysession");//cookie的session
-               param.type = 1;
-               param.code = '';
-             */
+
             param.vfwebqq = mq.vfwebqq;
             mq.rpcService.require({
-                url: GET_FRIEND_UIN,
-                method: "GET",
-                param: param,
+                url:GET_FRIEND_UIN,
+                method : "GET",
+                param : param,
                 withCredentials: true,
-                onSuccess: function(data) {
-                    if (data.retcode === 0) {
+                onSuccess : function(data){
+                    if(data.retcode === 0){
                         handlers.onGetFriendUinSuccess(data.result);
                     }
                 }
             });
-        }
+        };*/
         this.sendGetFriendInfo = function(uin) {
             var param = {};
             param.tuin = uin
@@ -8179,7 +8175,7 @@ define('mq.model.memberlist', ["./mq.i18n", "./mq.portal", "./mq.report"], funct
                     }
                 }
             });
-        }
+        };
         //获取好友在线状态
         this.sendGetBuddyOnlineState = function() {
             var param = {};
@@ -10146,7 +10142,7 @@ define('mq.presenter.chat', ['./mq.i18n'], function() {
                 //     });
                 // }
                 if (type == "friend") {
-                    m_model.sendGetFriendUin(uin);
+                    // m_model.sendGetFriendUin(uin);
                     var f = m_model.getFriendByUin(uin);
                     if (f.isStrange) {
                         packageContext.model.sendGetSessionSignature({
@@ -10939,8 +10935,7 @@ define('mq.presenter.profile', ["./mq.i18n", "./mq.view.transitionmanager"], fun
         var handlers = {
             onViewProfile: function(obj) {
                 var profile = packageContext.model.getBuddyInfo(obj.account, obj.type);
-                //取真实uin;
-                //packageContext.model.sendGetFriendUin(obj.account);
+
                 obj.profile = profile;
                 currentProfile = profile;
                 packageContext.view.viewProfile(obj);
