@@ -467,7 +467,7 @@ function(e, exports) { !
                 })
             }
             function N() {
-                t.debug && (V && a.cancel(V), y.start(4e4), V = a(function() {
+                t.debug && (F && a.cancel(F), y.start(4e4), F = a(function() {
                     s.syncCheck().then(function(e) {
                         return y.start(5e3),
                         e
@@ -607,29 +607,29 @@ function(e, exports) { !
             t.appClick = function(e) {
                 t.$broadcast("app:contextMenu:hide", e)
             };
-            var A, F = $(document.body);
-            F.on("dragenter", function(e) {
+            var A, V = $(document.body);
+            V.on("dragenter", function(e) {
                 var t = e.originalEvent;
                 A = t.target,
                 t.dataTransfer.dropEffect = "none",
-                F.addClass("drop-enter"),
+                V.addClass("drop-enter"),
                 t.stopPropagation(),
                 t.preventDefault()
             }),
-            F.on("dragleave", function(e) {
+            V.on("dragleave", function(e) {
                 var t = e.originalEvent;
                 t.dataTransfer.dropEffect = "none",
-                A === t.target && F.removeClass("drop-enter"),
+                A === t.target && V.removeClass("drop-enter"),
                 t.stopPropagation(),
                 t.preventDefault()
             }),
-            F.on("dragover", function(e) {
+            V.on("dragover", function(e) {
                 var t = e.originalEvent;
                 t.dataTransfer.dropEffect = "none",
                 t.stopPropagation(),
                 t.preventDefault()
             }),
-            F.on("drop", function(e) {
+            V.on("drop", function(e) {
                 var t = e.originalEvent;
                 t.dataTransfer.dropEffect = "none",
                 t.stopPropagation(),
@@ -684,7 +684,7 @@ function(e, exports) { !
                 })
             },
             y.callback(N);
-            var V
+            var F
         }])
     } ()
 },
@@ -1110,6 +1110,7 @@ function(e, exports, t) { !
                     blurClose: !0,
                     singletonId: "mmpop_profile",
                     controller: ["$scope", function(e) {
+                        o.VerifyFlag && (e.isOfficialUser = !0),
                         e.contact = o,
                         e.MMDefaultRemark = _("8d521cc"),
                         e.addUserContent = _("5a97440") + y.formatHTMLToSend(s.getUserInfo().NickName),
@@ -1329,8 +1330,8 @@ function(e, exports, t) { !
         "use strict";
         angular.module("Controllers").controller("chatSenderController", ["$rootScope", "$scope", "$http", "$timeout", "ngDialog", "confFactory", "accountFactory", "contactFactory", "chatFactory", "screenShotFactory", "utilFactory", "mmpop", "stateManageService", "emojiFactory", "reportService", function(e, a, n, i, o, c, r, s, l, d, f, u, m, g, p) {
             function h() {
-                var e = "undefined" != typeof V.textContent ? V.textContent : V.innerText,
-                t = V.getElementsByTagName("img").length > 0;
+                var e = "undefined" != typeof F.textContent ? F.textContent : F.innerText,
+                t = F.getElementsByTagName("img").length > 0;
                 e.length > 0 || t ? m.change("sender:hasText", !0) : m.change("sender:hasText", !1)
             }
             function M() {
@@ -1341,17 +1342,17 @@ function(e, exports, t) { !
             }
             function y() {
                 var e, t;
-                document.createRange ? (e = document.createRange(), e.selectNodeContents(V), e.collapse(!1), t = window.getSelection(), t.removeAllRanges(), t.addRange(e)) : document.selection && (e = document.body.createTextRange(), e.moveToElementText(V), e.collapse(!1), e.select())
+                document.createRange ? (e = document.createRange(), e.selectNodeContents(F), e.collapse(!1), t = window.getSelection(), t.removeAllRanges(), t.addRange(e)) : document.selection && (e = document.body.createTextRange(), e.moveToElementText(F), e.collapse(!1), e.select())
             }
             function b(e) {
                 var t, a, n = "";
                 if (window.getSelection) t = window.getSelection(),
-                t.rangeCount > 0 && (a = t.getRangeAt(0).cloneRange(), a.collapse(!0), a.setStart(V, 0), n = a.toString().slice(-e));
+                t.rangeCount > 0 && (a = t.getRangeAt(0).cloneRange(), a.collapse(!0), a.setStart(F, 0), n = a.toString().slice(-e));
                 else if ((t = document.selection) && "Control" != t.type) {
                     var i;
                     a = t.createRange(),
                     i = a.duplicate(),
-                    i.moveToElementText(V),
+                    i.moveToElementText(F),
                     i.setEndPoint("EndToStart", a),
                     n = i.text.slice(-e)
                 }
@@ -1374,15 +1375,15 @@ function(e, exports, t) { !
                     n.setStartAfter(s),
                     a.removeAllRanges(),
                     a.addRange(n);
-                    var l = s.offsetTop - 42 + s.offsetHeight - V.offsetHeight;
-                    V.scrollTop < l && (V.scrollTop = l);
+                    var l = s.offsetTop - 42 + s.offsetHeight - F.offsetHeight;
+                    F.scrollTop < l && (F.scrollTop = l)
                 } else n = t || !P ? document.selection.createRange() : P,
                 e = e.replace(/</gi, "&lt;").replace(/>/gi, "&gt;"),
                 n.pasteHTML(e),
                 n.select()
             }
             function w() {
-                window.getSelection && (window.getSelection().getRangeAt(0).insertNode(U), A = U.offsetLeft, F = U.offsetTop - V.scrollTop, x.appendChild(U))
+                window.getSelection && (window.getSelection().getRangeAt(0).insertNode(U), A = U.offsetLeft, V = U.offsetTop - F.scrollTop, x.appendChild(U))
             }
             function S(t) {
                 var a = o.open({
@@ -1418,8 +1419,8 @@ function(e, exports, t) { !
                 }
             }
             function T(e) {
-                V.innerHTML = a.editAreaCtn = e || "",
-                V.focus(),
+                F.innerHTML = a.editAreaCtn = e || "",
+                F.focus(),
                 h(),
                 m.change("sender:active", !0),
                 e && (y(), M())
@@ -1600,12 +1601,12 @@ function(e, exports, t) { !
             }
             var I, P, U = document.getElementById("caretPosHelper"),
             A = 0,
-            F = 0,
-            V = document.getElementById("editArea"),
-            x = V.parentNode,
+            V = 0,
+            F = document.getElementById("editArea"),
+            x = F.parentNode,
             D = f.getShareObject("editingContents"),
             R = !1;
-            $(V).on("input", function() {
+            $(F).on("input", function() {
                 M()
             }).on("click", function() {
                 M()
@@ -1619,13 +1620,13 @@ function(e, exports, t) { !
             a.editAreaCtn = "";
             var j;
             a.$on("$destroy", function() {
-                j && (D[j] = V.innerHTML)
+                j && (D[j] = F.innerHTML)
             }),
             a.$watch(function() {
                 return l.getCurrentUserName()
             },
             function(e, t) {
-                t && e != t && (D[t] = V.innerHTML),
+                t && e != t && (D[t] = F.innerHTML),
                 j = e,
                 T(D[e])
             }),
@@ -1680,7 +1681,7 @@ function(e, exports, t) { !
                             templateUrl: "editAreaContactPanel.html",
                             controller: "editAreaContactListController",
                             left: A,
-                            top: F,
+                            top: V,
                             scope: {
                                 chatRoomUserName: t,
                                 memberList: angular.copy(e),
@@ -1713,7 +1714,7 @@ function(e, exports, t) { !
                             i || (n += n)
                         }
                         a.insertToEditArea(n, !0),
-                        V.scrollTop = V.scrollHeight
+                        F.scrollTop = F.scrollHeight
                     } else a.sendTextMessage();
                     e.preventDefault()
                 }
@@ -1740,12 +1741,12 @@ function(e, exports, t) { !
                 }
             },
             a.$on("root:quoteMsg", function(e, t) {
-                T(t + (V.innerHTML.replace("<br>", "") ? V.innerHTML : "<br>")),
-                V.scrollTop = 9999
+                T(t + (F.innerHTML.replace("<br>", "") ? F.innerHTML : "<br>")),
+                F.scrollTop = 9999
             }),
             a.insertToEditArea = function(e, t) {
                 C(e, t),
-                a.editAreaCtn = V.innerHTML
+                a.editAreaCtn = F.innerHTML
             },
             a.sendTuzkiEmoji = function(e, t) {
                 var a = l.createMessage({
@@ -7198,7 +7199,7 @@ function(e, exports) {
                         t.onerror = null,
                         alert(_("845ec73"))
                     },
-                    t.src = n.imageList[n.current].url;
+                    t.src = n.imageList[n.current].url
                 }
                 var m = i.find("#img_dom"),
                 g = i.find("#img_opr_container"),
@@ -8607,4 +8608,4 @@ function(e, exports) { !
         }])
     } ()
 }]);
-/* vhtml-webpack-plugin version: 0.1.15 */
+/* vhtml-webpack-plugin version: 0.1.16 */
