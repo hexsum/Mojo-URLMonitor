@@ -78,6 +78,7 @@ var requirejs, require, define;
                 }
             }
             //end trimDots
+
             name = name.join('/');
         }
 
@@ -1208,6 +1209,7 @@ J.$package(function(J) {
 
     //html正文编码：对需要出现在HTML正文里(除了HTML属性外)的不信任输入进行编码
     var encodeHtml = function(sStr) {
+        sStr = '' + sStr;
         sStr = sStr.replace(/&/g, "&amp;");
         sStr = sStr.replace(/>/g, "&gt;");
         sStr = sStr.replace(/</g, "&lt;");
@@ -5106,6 +5108,7 @@ define('../lib/mui/js/mui.slide', ['jm'], function() {
             },
             _removeAnimation: function(ele) {
                 if (isWebkit) this.contentWrap.style["-webkit-transition"] = ""; //删除动画效果    
+
             },
             _sizeAdjust: function() {
                 var ele = this.elem;
@@ -5252,6 +5255,7 @@ define('../lib/mui/js/mui.swipechange', ['jm', './mui.slide'], function() {
                 this._removeAnimation();
                 this._moveTo(this.currentIndex * -this.contentWidth + this.moveDist);
                 // e.preventDefault();
+
             },
             _onEndEvt: function(e) {
                 if (!dragingElem) return;
@@ -14132,6 +14136,7 @@ define('mq.view.loginPanel', ["./mq.i18n", "./mq.view.transitionmanager"], funct
 });
 
 // Copyright (c) 1998 - 2011 Tencent Research. All Rights Reserved. 
+
 /**
  * @name        QPlus Tracker
  * @namespace   window.qplus
@@ -14174,6 +14179,7 @@ define('qtracker', [], function() {;
         //     'create_index_ui' : 5,
         //     'sort_plugins_feeds' : 6
         // };
+
         //Class
         var Class = function(proto, superClass) {
             var newfunc = function() {
