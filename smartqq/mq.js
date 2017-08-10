@@ -1816,7 +1816,7 @@ J.$package(function(J) {
 
     var startEvt, moveEvt, endEvt;
     //选择不同事件
-    if (J.platform.touchDevice) {
+    if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
         startEvt = "touchstart";
         moveEvt = "touchmove";
         endEvt = "touchend";
@@ -2340,7 +2340,7 @@ J.$package(function(J) {
             var upTarget;
 
             //选择不同事件
-            if (touchDevice) {
+            if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
                 startEvt = "touchstart";
                 moveEvt = "touchmove";
                 endEvt = "touchend";
@@ -11648,7 +11648,7 @@ define('mq.presenter.setting', ["./mq.i18n", "./mq.view.transitionmanager"], fun
             onLogout: function() {
                 if (confirm("您确定要退出吗？")) {
                     mq.main.logout();
-                    window.location.href = window.location.href;
+                    // window.location.href = window.location.href;
                 }
             },
             onShowAbout: function(thatdiv) {
@@ -13489,7 +13489,7 @@ define('mq.view.loginPanel', ["./mq.i18n", "./mq.view.transitionmanager"], funct
 
         var panelEl, maskerEl;
 
-        var panelHTML = '<iframe noscroll frameborder="0" style="position:' + 'absolute;width:100%;height:100%;border:0;"></iframe>' + ''; // '<div class="close-login-panel"></div>';
+        var panelHTML = '<iframe name="ptlogin" noscroll frameborder="0" style="position:' + 'absolute;width:100%;height:100%;border:0;"></iframe>' + ''; // '<div class="close-login-panel"></div>';
 
         this.init = function() {
 
@@ -14255,6 +14255,11 @@ define('mq.main', ['tmpl!../tmpl/tmpl_main_top.html', '../lib/mui/js/mui.tab', '
         this.logout = function() {
             J.cookie.remove("ptwebqq", "qq.com");
             J.cookie.remove("skey", "qq.com");
+
+            pt_logout.logout(function() {
+                console.log('logout success');
+                location.href = location.href;
+            });
         }
 
         this.isOnline = function() {
