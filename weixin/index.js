@@ -1460,8 +1460,7 @@ function(e, exports, t) { !
                             duplicate: !0,
                             threads: 1,
                             chunked: !0,
-                            chunkSize: 524288,
-                            withCredentials: !0
+                            chunkSize: 524288
                         }).on("beforeFileQueued", function(e) {
                             if (e._checked) return !0;
                             if (f.reportSendState("sendFile"), 0 == e.size) return H.skipFile(e),
