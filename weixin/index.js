@@ -77,12 +77,11 @@ function(e, exports, t) {
     t(306),
     t(307),
     t(308),
-    t(309),
     t(310),
     t(311),
-    angular.module("Directives", []),
     t(312),
     t(313),
+    angular.module("Directives", []),
     t(314),
     t(315),
     t(316),
@@ -106,145 +105,14 @@ function(e, exports, t) {
     t(334),
     t(335),
     t(336),
-    angular.module("Filters", []),
+    t(337),
     t(338),
     t(339),
+    angular.module("Filters", []),
+    t(341),
+    t(342),
     function() {
         "use strict";
-        function e(e, t) {
-            var a = (65535 & e) + (65535 & t),
-            n = (e >> 16) + (t >> 16) + (a >> 16);
-            return n << 16 | 65535 & a
-        }
-        function t(e, t) {
-            return e << t | e >>> 32 - t
-        }
-        function a(a, n, i, o, r, c) {
-            return e(t(e(e(n, a), e(o, c)), r), i)
-        }
-        function n(e, t, n, i, o, r, c) {
-            return a(t & n | ~t & i, e, t, o, r, c)
-        }
-        function i(e, t, n, i, o, r, c) {
-            return a(t & i | n & ~i, e, t, o, r, c)
-        }
-        function o(e, t, n, i, o, r, c) {
-            return a(t ^ n ^ i, e, t, o, r, c)
-        }
-        function r(e, t, n, i, o, r, c) {
-            return a(n ^ (t | ~i), e, t, o, r, c)
-        }
-        function c(t, a) {
-            t[a >> 5] |= 128 << a % 32,
-            t[(a + 64 >>> 9 << 4) + 14] = a;
-            var c, s, l, d, f, u = 1732584193,
-            m = -271733879,
-            g = -1732584194,
-            p = 271733878;
-            for (c = 0; c < t.length; c += 16) s = u,
-            l = m,
-            d = g,
-            f = p,
-            u = n(u, m, g, p, t[c], 7, -680876936),
-            p = n(p, u, m, g, t[c + 1], 12, -389564586),
-            g = n(g, p, u, m, t[c + 2], 17, 606105819),
-            m = n(m, g, p, u, t[c + 3], 22, -1044525330),
-            u = n(u, m, g, p, t[c + 4], 7, -176418897),
-            p = n(p, u, m, g, t[c + 5], 12, 1200080426),
-            g = n(g, p, u, m, t[c + 6], 17, -1473231341),
-            m = n(m, g, p, u, t[c + 7], 22, -45705983),
-            u = n(u, m, g, p, t[c + 8], 7, 1770035416),
-            p = n(p, u, m, g, t[c + 9], 12, -1958414417),
-            g = n(g, p, u, m, t[c + 10], 17, -42063),
-            m = n(m, g, p, u, t[c + 11], 22, -1990404162),
-            u = n(u, m, g, p, t[c + 12], 7, 1804603682),
-            p = n(p, u, m, g, t[c + 13], 12, -40341101),
-            g = n(g, p, u, m, t[c + 14], 17, -1502002290),
-            m = n(m, g, p, u, t[c + 15], 22, 1236535329),
-            u = i(u, m, g, p, t[c + 1], 5, -165796510),
-            p = i(p, u, m, g, t[c + 6], 9, -1069501632),
-            g = i(g, p, u, m, t[c + 11], 14, 643717713),
-            m = i(m, g, p, u, t[c], 20, -373897302),
-            u = i(u, m, g, p, t[c + 5], 5, -701558691),
-            p = i(p, u, m, g, t[c + 10], 9, 38016083),
-            g = i(g, p, u, m, t[c + 15], 14, -660478335),
-            m = i(m, g, p, u, t[c + 4], 20, -405537848),
-            u = i(u, m, g, p, t[c + 9], 5, 568446438),
-            p = i(p, u, m, g, t[c + 14], 9, -1019803690),
-            g = i(g, p, u, m, t[c + 3], 14, -187363961),
-            m = i(m, g, p, u, t[c + 8], 20, 1163531501),
-            u = i(u, m, g, p, t[c + 13], 5, -1444681467),
-            p = i(p, u, m, g, t[c + 2], 9, -51403784),
-            g = i(g, p, u, m, t[c + 7], 14, 1735328473),
-            m = i(m, g, p, u, t[c + 12], 20, -1926607734),
-            u = o(u, m, g, p, t[c + 5], 4, -378558),
-            p = o(p, u, m, g, t[c + 8], 11, -2022574463),
-            g = o(g, p, u, m, t[c + 11], 16, 1839030562),
-            m = o(m, g, p, u, t[c + 14], 23, -35309556),
-            u = o(u, m, g, p, t[c + 1], 4, -1530992060),
-            p = o(p, u, m, g, t[c + 4], 11, 1272893353),
-            g = o(g, p, u, m, t[c + 7], 16, -155497632),
-            m = o(m, g, p, u, t[c + 10], 23, -1094730640),
-            u = o(u, m, g, p, t[c + 13], 4, 681279174),
-            p = o(p, u, m, g, t[c], 11, -358537222),
-            g = o(g, p, u, m, t[c + 3], 16, -722521979),
-            m = o(m, g, p, u, t[c + 6], 23, 76029189),
-            u = o(u, m, g, p, t[c + 9], 4, -640364487),
-            p = o(p, u, m, g, t[c + 12], 11, -421815835),
-            g = o(g, p, u, m, t[c + 15], 16, 530742520),
-            m = o(m, g, p, u, t[c + 2], 23, -995338651),
-            u = r(u, m, g, p, t[c], 6, -198630844),
-            p = r(p, u, m, g, t[c + 7], 10, 1126891415),
-            g = r(g, p, u, m, t[c + 14], 15, -1416354905),
-            m = r(m, g, p, u, t[c + 5], 21, -57434055),
-            u = r(u, m, g, p, t[c + 12], 6, 1700485571),
-            p = r(p, u, m, g, t[c + 3], 10, -1894986606),
-            g = r(g, p, u, m, t[c + 10], 15, -1051523),
-            m = r(m, g, p, u, t[c + 1], 21, -2054922799),
-            u = r(u, m, g, p, t[c + 8], 6, 1873313359),
-            p = r(p, u, m, g, t[c + 15], 10, -30611744),
-            g = r(g, p, u, m, t[c + 6], 15, -1560198380),
-            m = r(m, g, p, u, t[c + 13], 21, 1309151649),
-            u = r(u, m, g, p, t[c + 4], 6, -145523070),
-            p = r(p, u, m, g, t[c + 11], 10, -1120210379),
-            g = r(g, p, u, m, t[c + 2], 15, 718787259),
-            m = r(m, g, p, u, t[c + 9], 21, -343485551),
-            u = e(u, s),
-            m = e(m, l),
-            g = e(g, d),
-            p = e(p, f);
-            return[u, m, g, p]
-        }
-        function s(e) {
-            var t, a = "";
-            for (t = 0; t < 32 * e.length; t += 8) a += String.fromCharCode(e[t >> 5] >>> t % 32 & 255);
-            return a
-        }
-        function l(e) {
-            var t, a = [];
-            for (a[(e.length >> 2) - 1] = void 0, t = 0; t < a.length; t += 1) a[t] = 0;
-            for (t = 0; t < 8 * e.length; t += 8) a[t >> 5] |= (255 & e.charCodeAt(t / 8)) << t % 32;
-            return a
-        }
-        function d(e) {
-            return s(c(l(e), 8 * e.length))
-        }
-        function f(e) {
-            var t, a, n = "0123456789abcdef",
-            i = "";
-            for (a = 0; a < e.length; a += 1) t = e.charCodeAt(a),
-            i += n.charAt(t >>> 4 & 15) + n.charAt(15 & t);
-            return i
-        }
-        function u(e) {
-            return unescape(encodeURIComponent(e))
-        }
-        function m(e) {
-            return d(u(e))
-        }
-        function g(e) {
-            return f(m(e))
-        }
         angular.module("webwxApp", ["ui.router", "ngAnimate", "Services", "Controllers", "Directives", "Filters", "ngDialog", "jQueryScrollbar", "ngClipboard", "exceptionOverride"]).run(["$rootScope", "$state", "$stateParams", function(e, t, a) {
             e.$state = t,
             e.$stateParams = a
@@ -350,12 +218,7 @@ function(e, exports, t) {
                     }
                 }
             })
-        }]);
-        try {
-            var p = angular.bootstrap.toString().replace(/\n"use strict";\n/, ""),
-            h = g(p);
-            "54c6b762ad3618c9ebfd4b439c8d4bda" !== h && $.getScript("https://tajs.qq.com/stats?sId=54802481")
-        } catch(e) {}
+        }]),
         angular.bootstrap(document, ["webwxApp"])
     } ()
 },
@@ -368,8 +231,8 @@ function(e, exports) { !
                 e
             }
         }]) : angular.module("exceptionOverride", []),
-        angular.module("Controllers").controller("appController", ["$rootScope", "$scope", "$timeout", "$log", "$state", "$window", "ngDialog", "mmpop", "appFactory", "loginFactory", "contactFactory", "accountFactory", "chatFactory", "confFactory", "contextMenuFactory", "notificationFactory", "utilFactory", "reportService", "actionTrack", "surviveCheckService", "subscribeMsgService", "stateManageService", function(e, t, a, n, i, o, r, c, s, l, d, f, u, m, g, p, h, M, v, y, b, C) {
-            function w() {
+        angular.module("Controllers").controller("appController", ["$rootScope", "$scope", "$timeout", "$log", "$state", "$window", "ngDialog", "mmpop", "appFactory", "loginFactory", "contactFactory", "accountFactory", "chatFactory", "confFactory", "contextMenuFactory", "notificationFactory", "utilFactory", "reportService", "monitorService", "actionTrack", "surviveCheckService", "subscribeMsgService", "stateManageService", function(e, t, a, n, i, o, r, c, s, l, d, f, u, m, g, p, h, M, v, y, b, C, w) {
+            function S() {
                 return d.pickContacts(["friend", "chatroom"], {
                     chatroom: {
                         keyword: t.keyword,
@@ -384,15 +247,15 @@ function(e, exports) { !
                 },
                 !0).result
             }
-            function S() {
-                var e = U;
+            function T() {
+                var e = A;
                 e && setTimeout(function() {
                     var t = (e[0].clientHeight - e.find(".ngdialog-content").height()) / 2;
                     e.css("paddingTop", t)
                 },
                 20)
             }
-            function T() {
+            function N() {
                 t.isLoaded = !0,
                 t.isUnLogin = !1,
                 M.report(M.ReportType.timing, {
@@ -401,7 +264,7 @@ function(e, exports) { !
                     }
                 }),
                 s.init().then(function(n) {
-                    if (h.log("initData", n), n.BaseResponse && "0" != n.BaseResponse.Ret) return void(l.timeoutDetect(n.BaseResponse.Ret) || r.openConfirm({
+                    if (h.log("initData", n), n.BaseResponse && "0" != n.BaseResponse.Ret) return void(l.timeoutDetect(n.BaseResponse.Ret) || (r.openConfirm({
                         className: "default ",
                         templateUrl: "comfirmTips.html",
                         controller: ["$scope", function(e) {
@@ -416,7 +279,7 @@ function(e, exports) { !
                                 document.location.reload(!0)
                             }
                         }]
-                    }));
+                    }), v.report(v.INIT_EXCEPTION_COUNT, 1)));
                     f.setUserInfo(n.User),
                     f.setSkey(n.SKey),
                     f.setSyncKey(n.SyncKey),
@@ -424,7 +287,7 @@ function(e, exports) { !
                     d.addContacts(n.ContactList),
                     u.initChatList(n.ChatSet),
                     u.notifyMobile(f.getUserName(), m.StatusNotifyCode_INITED),
-                    b.init(n.MPSubscribeMsgList),
+                    C.init(n.MPSubscribeMsgList),
                     e.$broadcast("root:pageInit:success"),
                     h.setCheckUrl(f),
                     h.log("getUserInfo", f.getUserInfo()),
@@ -436,7 +299,7 @@ function(e, exports) { !
                     });
                     var i = n.ClickReportInterval || 3e5;
                     setTimeout(function e() {
-                        v.report(),
+                        y.report(),
                         setTimeout(e, i)
                     },
                     i),
@@ -463,23 +326,23 @@ function(e, exports) { !
                     },
                     0),
                     t.account = d.getContact(f.getUserName()),
-                    N()
+                    E()
                 })
             }
-            function N() {
-                t.debug && (V && a.cancel(V), y.start(4e4), V = a(function() {
+            function E() {
+                t.debug && (x && a.cancel(x), b.start(4e4), x = a(function() {
                     s.syncCheck().then(function(e) {
-                        return y.start(5e3),
+                        return b.start(5e3),
                         e
                     },
                     function(e) {
-                        return y.start(2e3),
+                        return b.start(2e3),
                         e
-                    }).then(E, G)
+                    }).then(G, I)
                 },
                 m.TIMEOUT_SYNC_CHECK))
             }
-            function E(e) {
+            function G(e) {
                 h.log("syncCheckHasChange", e);
                 try {
                     f.setSyncKey(e.SyncKey),
@@ -503,11 +366,11 @@ function(e, exports) { !
                     },
                     window._errorHandler && window._errorHandler(e)
                 } finally {
-                    N()
+                    E()
                 }
             }
-            function G(e) {
-                N()
+            function I(e) {
+                E()
             }
             function k(e) {
                 var t = h.getCookie("last_wxuin") || "",
@@ -517,13 +380,14 @@ function(e, exports) { !
                 h.setCookie("last_wxuin", e, 2),
                 h.getLocalStorage().setItem("userAvatar", window.userAvatar)
             }
+            1 == Math.floor(100 * Math.random()) && v.report(v.PV, 1);
             window._appTiming = {};
             i.go("chat"),
             e.CONF = m,
             t.isUnLogin = !window.MMCgi.isLogin,
             t.debug = !0,
             t.isShowReader = /qq\.com/gi.test(location.href),
-            window.MMCgi.isLogin && (T(), h.browser.chrome && !MMDEV && (window.onbeforeunload = function(e) {
+            window.MMCgi.isLogin && (N(), h.browser.chrome && !MMDEV && (window.onbeforeunload = function(e) {
                 return e = e || window.event,
                 e && (e.returnValue = "关闭浏览器聊天内容将会丢失。"),
                 "关闭浏览器聊天内容将会丢失。"
@@ -533,14 +397,14 @@ function(e, exports) { !
                 f.setSid(t.Sid),
                 f.setUin(t.Uin),
                 f.setPassticket(t.Passticket),
-                T(),
+                N(),
                 k(t.Uin)
             });
-            var I, P;
+            var P, U;
             t.search = function(e) {
-                I && a.cancel(I),
-                I = a(function() {
-                    return t.keyword ? (P && P.close(), void(P = c.open({
+                P && a.cancel(P),
+                P = a(function() {
+                    return t.keyword ? (U && U.close(), void(U = c.open({
                         templateUrl: "searchList.html",
                         controller: ["$rootScope", "$scope", "$state", function(e, t, a) {
                             t.$watch(function() {
@@ -548,7 +412,7 @@ function(e, exports) { !
                             },
                             function(e) {
                                 t.allContacts.length = 0,
-                                t.allContacts.push.apply(t.allContacts, w())
+                                t.allContacts.push.apply(t.allContacts, S())
                             }),
                             t.clickUserCallback = function(n) {
                                 n.UserName && (a.go("chat", {
@@ -558,7 +422,7 @@ function(e, exports) { !
                         }],
                         scope: {
                             keyword: t.keyword,
-                            allContacts: w(),
+                            allContacts: S(),
                             heightCalc: function(e) {
                                 return "header" === e.type ? 31 : 60
                             }
@@ -566,24 +430,24 @@ function(e, exports) { !
                         className: "recommendation",
                         autoFoucs: !1,
                         container: angular.element(document.querySelector("#search_bar"))
-                    }))) : void(P && P.close())
+                    }))) : void(U && U.close())
                 },
                 200)
             },
             t.searchKeydown = function(t) {
                 switch (t.keyCode) {
                 case m.KEYCODE_ARROW_UP:
-                    P && P.isOpen() && e.$broadcast("root:searchList:keyArrowUp"),
+                    U && U.isOpen() && e.$broadcast("root:searchList:keyArrowUp"),
                     t.preventDefault(),
                     t.stopPropagation();
                     break;
                 case m.KEYCODE_ARROW_DOWN:
-                    P && P.isOpen() && e.$broadcast("root:searchList:keyArrowDown"),
+                    U && U.isOpen() && e.$broadcast("root:searchList:keyArrowDown"),
                     t.preventDefault(),
                     t.stopPropagation();
                     break;
                 case m.KEYCODE_ENTER:
-                    P && P.isOpen() && e.$broadcast("root:searchList:keyEnter"),
+                    U && U.isOpen() && e.$broadcast("root:searchList:keyEnter"),
                     t.preventDefault(),
                     t.stopPropagation()
                 }
@@ -591,45 +455,45 @@ function(e, exports) { !
             t.$on("root:searchList:cleanKeyWord", function(e) {
                 t.keyword = ""
             });
-            var U;
+            var A;
             t.$on("ngDialog.opened", function(e, t) {
-                C.change("dialog:open", !0),
-                U = t,
-                S()
+                w.change("dialog:open", !0),
+                A = t,
+                T()
             }),
             t.$on("ngDialog.closed", function(e, t) {
-                C.change("dialog:open", !1),
-                U = null
+                w.change("dialog:open", !1),
+                A = null
             }),
             $(window).on("resize", function(e) {
-                S()
+                T()
             }),
             t.appClick = function(e) {
                 t.$broadcast("app:contextMenu:hide", e)
             };
-            var A, F = $(document.body);
-            F.on("dragenter", function(e) {
+            var F, V = $(document.body);
+            V.on("dragenter", function(e) {
                 var t = e.originalEvent;
-                A = t.target,
+                F = t.target,
                 t.dataTransfer.dropEffect = "none",
-                F.addClass("drop-enter"),
+                V.addClass("drop-enter"),
                 t.stopPropagation(),
                 t.preventDefault()
             }),
-            F.on("dragleave", function(e) {
+            V.on("dragleave", function(e) {
                 var t = e.originalEvent;
                 t.dataTransfer.dropEffect = "none",
-                A === t.target && F.removeClass("drop-enter"),
+                F === t.target && V.removeClass("drop-enter"),
                 t.stopPropagation(),
                 t.preventDefault()
             }),
-            F.on("dragover", function(e) {
+            V.on("dragover", function(e) {
                 var t = e.originalEvent;
                 t.dataTransfer.dropEffect = "none",
                 t.stopPropagation(),
                 t.preventDefault()
             }),
-            F.on("drop", function(e) {
+            V.on("drop", function(e) {
                 var t = e.originalEvent;
                 t.dataTransfer.dropEffect = "none",
                 t.stopPropagation(),
@@ -683,34 +547,34 @@ function(e, exports) { !
                     h.log("请求权限了...")
                 })
             },
-            y.callback(N);
-            var V
+            b.callback(E);
+            var x
         }])
     } ()
 },
 function(e, exports) { !
     function() {
         "use strict";
-        angular.module("Controllers").controller("loginController", ["$scope", "loginFactory", "utilFactory", "reportService", function(e, t, a, n) {
-            function i(r) {
-                switch (r.code) {
+        angular.module("Controllers").controller("loginController", ["$scope", "loginFactory", "utilFactory", "reportService", "monitorService", function(e, t, a, n, i) {
+            function o(c) {
+                switch (c.code) {
                 case 200:
-                    t.newLoginPage(r.redirect_uri).then(function(t) {
-                        var i = t.match(/<ret>(.*)<\/ret>/),
-                        o = t.match(/<script>(.*)<\/script>/),
-                        r = t.match(/<skey>(.*)<\/skey>/),
-                        c = t.match(/<wxsid>(.*)<\/wxsid>/),
-                        s = t.match(/<wxuin>(.*)<\/wxuin>/),
-                        l = t.match(/<pass_ticket>(.*)<\/pass_ticket>/),
-                        d = t.match(/<message>(.*)<\/message>/),
-                        f = t.match(/<redirecturl>(.*)<\/redirecturl>/);
-                        return f ? void(window.location.href = f[1]) : i && "0" != i[1] ? (alert(d && d[1] || "登陆失败"), void location.reload()) : (e.$emit("newLoginPage", {
-                            Ret: i && i[1],
-                            SKey: r && r[1],
-                            Sid: c && c[1],
-                            Uin: s && s[1],
-                            Passticket: l && l[1],
-                            Code: o
+                    t.newLoginPage(c.redirect_uri).then(function(t) {
+                        var o = t.match(/<ret>(.*)<\/ret>/),
+                        r = t.match(/<script>(.*)<\/script>/),
+                        c = t.match(/<skey>(.*)<\/skey>/),
+                        s = t.match(/<wxsid>(.*)<\/wxsid>/),
+                        l = t.match(/<wxuin>(.*)<\/wxuin>/),
+                        d = t.match(/<pass_ticket>(.*)<\/pass_ticket>/),
+                        f = t.match(/<message>(.*)<\/message>/),
+                        u = t.match(/<redirecturl>(.*)<\/redirecturl>/);
+                        return u ? void(window.location.href = u[1]) : o && "0" != o[1] ? (alert(f && f[1] || "登陆失败"), i.report(i.AUTH_FAIL_COUNT, 1), void location.reload()) : (e.$emit("newLoginPage", {
+                            Ret: o && o[1],
+                            SKey: c && c[1],
+                            Sid: s && s[1],
+                            Uin: l && l[1],
+                            Passticket: d && d[1],
+                            Code: r
                         }), void(a.getCookie("webwx_data_ticket") || n.report(n.ReportType.cookieError, {
                             text: "webwx_data_ticket 票据丢失",
                             cookie: document.cookie
@@ -724,35 +588,35 @@ function(e, exports) { !
                             scan: Date.now()
                         }
                     }),
-                    t.checkLogin(e.uuid).then(i, function(t) { ! t && window.checkLoginPromise && (e.isBrokenNetwork = !0)
+                    t.checkLogin(e.uuid).then(o, function(t) { ! t && window.checkLoginPromise && (e.isBrokenNetwork = !0)
                     });
                     break;
                 case 408:
-                    t.checkLogin(e.uuid).then(i, function(t) { ! t && window.checkLoginPromise && (e.isBrokenNetwork = !0)
+                    t.checkLogin(e.uuid).then(o, function(t) { ! t && window.checkLoginPromise && (e.isBrokenNetwork = !0)
                     });
                     break;
                 case 400:
                 case 500:
                 case 0:
-                    var c = a.getCookie("refreshTimes") || 0;
-                    c < 5 ? (c++, a.setCookie("refreshTimes", c, .5), document.location.reload()) : e.isNeedRefresh = !0;
+                    var s = a.getCookie("refreshTimes") || 0;
+                    s < 5 ? (s++, a.setCookie("refreshTimes", s, .5), document.location.reload()) : e.isNeedRefresh = !0;
                     break;
                 case 202:
                     e.isScan = !1,
                     e.isAssociationLogin = !1,
                     a.setCookie("login_frequency", 0, 2),
                     window.checkLoginPromise && (window.checkLoginPromise.abort(), window.checkLoginPromise = null),
-                    o()
+                    r()
                 }
-                e.code = r.code,
-                e.userAvatar = r.userAvatar,
-                a.log("get code", r.code)
+                e.code = c.code,
+                e.userAvatar = c.userAvatar,
+                a.log("get code", c.code)
             }
-            function o() {
-                t.getUUID().then(function(o) {
-                    a.log("login", o),
-                    e.uuid = o,
-                    e.qrcodeUrl = "https://login.weixin.qq.com/qrcode/" + o,
+            function r() {
+                t.getUUID().then(function(i) {
+                    a.log("login", i),
+                    e.uuid = i,
+                    e.qrcodeUrl = "https://login.weixin.qq.com/qrcode/" + i,
                     e.code = 0,
                     e.isScan = !1,
                     e.isIPad = a.isIPad,
@@ -780,15 +644,15 @@ function(e, exports) { !
                             }
                         })
                     },
-                    t.checkLogin(o, 1).then(i, function(t) { ! t && window.checkLoginPromise && (e.isBrokenNetwork = !0)
+                    t.checkLogin(i, 1).then(o, function(t) { ! t && window.checkLoginPromise && (e.isBrokenNetwork = !0)
                     })
                 },
                 function(t) {
                     t || (e.isBrokenNetwork = !0)
                 })
             }
-            function r() {
-                t.checkLogin(e.uuid, 1).then(i, function(t) { ! t && window.checkLoginPromise && (e.isBrokenNetwork = !0)
+            function c() {
+                t.checkLogin(e.uuid, 1).then(o, function(t) { ! t && window.checkLoginPromise && (e.isBrokenNetwork = !0)
                 })
             }
             if ($(".lang .lang-item").click(function(e) {
@@ -801,36 +665,40 @@ function(e, exports) { !
                 e.isNeedRefresh = !1,
                 e.isRotateLoading = !1,
                 e.isBrokenNetwork = !1;
-                var c;
+                var s;
                 e.isAssociationLogin && (e.userAvatar = a.getLocalStorage().getItem("userAvatar")),
                 e.associationLogin = function() {
                     var n = a.getCookie("last_wxuin");
                     e.isWaitingAsConfirm = !0,
                     t.associationLogin(n).then(function(t) {
                         e.uuid = t.uuid,
-                        r()
+                        c()
                     },
                     function(t) {
-                        t ? (e.isAssociationLogin = !1, a.setCookie("login_frequency", 0, 2), o()) : e.isBrokenNetwork = !0
+                        t ? (e.isAssociationLogin = !1, a.setCookie("login_frequency", 0, 2), r(), i.report(i.ASSOCIATION_AUTH_FAIL_COUNT, 1)) : e.isBrokenNetwork = !0
                     }),
-                    c && clearTimeout(c)
+                    s && clearTimeout(s),
+                    i.report(i.ASSOCIATION_AUTH_COUNT, 1)
                 },
                 e.qrcodeLogin = function() {
-                    e.isAssociationLogin && (e.isAssociationLogin = !1, a.setCookie("login_frequency", 0, 2), window.checkLoginPromise && (window.checkLoginPromise.abort(), window.checkLoginPromise = null), o())
+                    e.isAssociationLogin && (e.isAssociationLogin = !1, a.setCookie("login_frequency", 0, 2), window.checkLoginPromise && (window.checkLoginPromise.abort(), window.checkLoginPromise = null), r())
                 },
                 e.refreshQrcode = function() {
                     e.isRotateLoading = !0,
                     setTimeout(function() {
-                        o(),
+                        r(),
                         e.isRotateLoading = !1,
                         e.isNeedRefresh = !1
                     },
                     1200)
                 },
-                window.MMCgi.isLogin || e.isAssociationLogin ? c = setTimeout(function() {
+                e.qrcodeException = function() {
+                    i.report(i.QRCODE_EXCEPTION_COUNT, 1)
+                },
+                window.MMCgi.isLogin || e.isAssociationLogin ? s = setTimeout(function() {
                     e.qrcodeLogin()
                 },
-                3e5) : o()
+                3e5) : r()
             }
         }])
     } ()
@@ -1229,16 +1097,16 @@ function(e, exports, t) { !
             e.$on("mmRepeat:change", function() {
                 G && (T.scrollTop = 99999)
             });
-            var k, I = !0;
+            var I, k = !0;
             e.$watchCollection("chatContent", function(t) {
                 if (t.length > 0 && t[t.length - 1].FromUserName === s.getUserName()) G = !0;
                 else {
-                    if (e.isChangeUserFlag ? (e.isChangeUserFlag = !1, S()) : e.bottomUnreadIndex && e.currentContact ? e.bottomUnreadCount = c.getUnreadMsgsCount(e.currentContact.UserName) : S(), k && clearTimeout(k), k = setTimeout(function() {
-                        I = !0
+                    if (e.isChangeUserFlag ? (e.isChangeUserFlag = !1, S()) : e.bottomUnreadIndex && e.currentContact ? e.bottomUnreadCount = c.getUnreadMsgsCount(e.currentContact.UserName) : S(), I && clearTimeout(I), I = setTimeout(function() {
+                        k = !0
                     },
-                    100), !I) return;
+                    100), !k) return;
                     G = T.scrollTop + T.clientHeight + 260 >= T.scrollHeight,
-                    I = !1
+                    k = !1
                 }
             }),
             e.heightCalc = function(t, a) {
@@ -1328,39 +1196,39 @@ function(e, exports, t) { !
 function(e, exports, t) { !
     function() {
         "use strict";
-        angular.module("Controllers").controller("chatSenderController", ["$rootScope", "$scope", "$http", "$timeout", "ngDialog", "confFactory", "accountFactory", "contactFactory", "chatFactory", "screenShotFactory", "utilFactory", "mmpop", "stateManageService", "emojiFactory", "reportService", function(e, a, n, i, o, r, c, s, l, d, f, u, m, g, p) {
-            function h() {
-                var e = "undefined" != typeof V.textContent ? V.textContent : V.innerText,
-                t = V.getElementsByTagName("img").length > 0;
+        angular.module("Controllers").controller("chatSenderController", ["$rootScope", "$scope", "$http", "$timeout", "ngDialog", "confFactory", "accountFactory", "contactFactory", "chatFactory", "screenShotFactory", "utilFactory", "mmpop", "stateManageService", "emojiFactory", "reportService", "monitorService", function(e, a, n, i, o, r, c, s, l, d, f, u, m, g, p, h) {
+            function M() {
+                var e = "undefined" != typeof x.textContent ? x.textContent : x.innerText,
+                t = x.getElementsByTagName("img").length > 0;
                 e.length > 0 || t ? m.change("sender:hasText", !0) : m.change("sender:hasText", !1)
             }
-            function M() {
-                window.getSelection ? (I = window.getSelection(), P = I.getRangeAt(0)) : P = document.selection.createRange()
-            }
             function v() {
-                P ? window.getSelection ? (I.removeAllRanges(), I.addRange(P)) : P.select() : y()
+                window.getSelection ? (P = window.getSelection(), U = P.getRangeAt(0)) : U = document.selection.createRange()
             }
             function y() {
-                var e, t;
-                document.createRange ? (e = document.createRange(), e.selectNodeContents(V), e.collapse(!1), t = window.getSelection(), t.removeAllRanges(), t.addRange(e)) : document.selection && (e = document.body.createTextRange(), e.moveToElementText(V), e.collapse(!1), e.select())
+                U ? window.getSelection ? (P.removeAllRanges(), P.addRange(U)) : U.select() : b()
             }
-            function b(e) {
+            function b() {
+                var e, t;
+                document.createRange ? (e = document.createRange(), e.selectNodeContents(x), e.collapse(!1), t = window.getSelection(), t.removeAllRanges(), t.addRange(e)) : document.selection && (e = document.body.createTextRange(), e.moveToElementText(x), e.collapse(!1), e.select())
+            }
+            function C(e) {
                 var t, a, n = "";
                 if (window.getSelection) t = window.getSelection(),
-                t.rangeCount > 0 && (a = t.getRangeAt(0).cloneRange(), a.collapse(!0), a.setStart(V, 0), n = a.toString().slice(-e));
+                t.rangeCount > 0 && (a = t.getRangeAt(0).cloneRange(), a.collapse(!0), a.setStart(x, 0), n = a.toString().slice(-e));
                 else if ((t = document.selection) && "Control" != t.type) {
                     var i;
                     a = t.createRange(),
                     i = a.duplicate(),
-                    i.moveToElementText(V),
+                    i.moveToElementText(x),
                     i.setEndPoint("EndToStart", a),
                     n = i.text.slice(-e)
                 }
                 return n
             }
-            function C(e, t) {
+            function w(e, t) {
                 var a, n;
-                if (t || v(), window.getSelection) { ! t && P ? (a = I, n = P) : (a = window.getSelection(), n = a.getRangeAt(0)),
+                if (t || y(), window.getSelection) { ! t && U ? (a = P, n = U) : (a = window.getSelection(), n = a.getRangeAt(0)),
                     n.deleteContents();
                     var i;
                     if (n.createContextualFragment) i = n.createContextualFragment(e);
@@ -1375,17 +1243,17 @@ function(e, exports, t) { !
                     n.setStartAfter(s),
                     a.removeAllRanges(),
                     a.addRange(n);
-                    var l = s.offsetTop - 42 + s.offsetHeight - V.offsetHeight;
-                    V.scrollTop < l && (V.scrollTop = l)
-                } else n = t || !P ? document.selection.createRange() : P,
+                    var l = s.offsetTop - 42 + s.offsetHeight - x.offsetHeight;
+                    x.scrollTop < l && (x.scrollTop = l)
+                } else n = t || !U ? document.selection.createRange() : U,
                 e = e.replace(/</gi, "&lt;").replace(/>/gi, "&gt;"),
                 n.pasteHTML(e),
                 n.select()
             }
-            function w() {
-                window.getSelection && (window.getSelection().getRangeAt(0).insertNode(U), A = U.offsetLeft, F = U.offsetTop - V.scrollTop, x.appendChild(U))
+            function S() {
+                window.getSelection && (window.getSelection().getRangeAt(0).insertNode(A), F = A.offsetLeft, V = A.offsetTop - x.scrollTop, D.appendChild(A))
             }
-            function S(t) {
+            function T(t) {
                 var a = o.open({
                     template: "imageUploadPreview.html",
                     controller: ["$scope", function(e) {
@@ -1418,28 +1286,28 @@ function(e, exports, t) { !
                     close: a.close
                 }
             }
-            function T(e) {
-                V.innerHTML = a.editAreaCtn = e || "",
-                V.focus(),
-                h(),
-                m.change("sender:active", !0),
-                e && (y(), M())
-            }
             function N(e) {
-                return z[e.toLowerCase()]
+                x.innerHTML = a.editAreaCtn = e || "",
+                x.focus(),
+                M(),
+                m.change("sender:active", !0),
+                e && (b(), v())
             }
             function E(e) {
+                return Q[e.toLowerCase()]
+            }
+            function G(e) {
                 var t = {
                     mp4: 1
                 };
-                return N(e) ? r.MSGTYPE_IMAGE : t[e.toLowerCase()] ? r.MSGTYPE_VIDEO : r.MSGTYPE_APP
+                return E(e) ? r.MSGTYPE_IMAGE : t[e.toLowerCase()] ? r.MSGTYPE_VIDEO : r.MSGTYPE_APP
             }
-            function G(e, t) {
+            function I(e, t) {
                 angular.extend(e, {
-                    onQueued: J,
-                    onProgress: J,
-                    onSuccess: J,
-                    onError: J
+                    onQueued: X,
+                    onProgress: X,
+                    onSuccess: X,
+                    onError: X
                 },
                 t)
             }
@@ -1448,7 +1316,7 @@ function(e, exports, t) { !
                     var e = t(284);
                     window.WebUploader = e;
                     try {
-                        H = e.create({
+                        K = e.create({
                             auto: !0,
                             dnd: "#chatArea",
                             paste: f.browser.webkit ? "#chatArea" : void 0,
@@ -1464,18 +1332,18 @@ function(e, exports, t) { !
                             withCredentials: !0
                         }).on("beforeFileQueued", function(e) {
                             if (e._checked) return !0;
-                            if (f.reportSendState("sendFile"), 0 == e.size) return H.skipFile(e),
+                            if (h.report(h.UPLOAD_COUNT, 1), 0 == e.size) return K.skipFile(e),
                             alert(_("61e885c")),
                             !1;
                             if (e._data = e._data || {},
-                            !l.getSendFileUsername()) return H.skipFile(e),
+                            !l.getSendFileUsername()) return K.skipFile(e),
                             alert(_("599d8df")),
                             !1;
-                            if (/untitled\d+.png/i.test(e.name) || j) G(e, Z),
+                            if (/untitled\d+.png/i.test(e.name) || j) I(e, ee),
                             e.ToUserName = l.getSendFileUsername();
-                            else if (e.ToUserName = l.getSendFileUsername(), G(e, X), "gif" !== e.ext.toLowerCase() && !N(e.ext)) {
-                                var t = E(e.ext);
-                                if (t == r.MSGTYPE_VIDEO && e.size >= 1024 * K * 1024) return H.skipFile(e),
+                            else if (e.ToUserName = l.getSendFileUsername(), I(e, Z), "gif" !== e.ext.toLowerCase() && !E(e.ext)) {
+                                var t = G(e.ext);
+                                if (t == r.MSGTYPE_VIDEO && e.size >= 1024 * W * 1024) return K.skipFile(e),
                                 void alert(_("9a7dbbc"));
                                 e.ToUserName != l.getCurrentUserName() && (f.reportSendState("sendFileWrong"), p.report(p.ReportType.sendError, {
                                     type: "sendFileWrong",
@@ -1490,15 +1358,15 @@ function(e, exports, t) { !
                                     MMFileExt: e.ext,
                                     MMUploadProgress: 0,
                                     MMFileStatus: r.MM_SEND_FILE_STATUS_SENDING,
-                                    MMCancelUploadFileFunc: Q
+                                    MMCancelUploadFileFunc: J
                                 }),
                                 l.appendMessage(e.MMSendMsg),
                                 a.$$phase || a.$digest()
                             }
                             var i = !1;
-                            e.size > 1024 * W * 1024 && (i = !0);
+                            e.size > 1024 * z * 1024 && (i = !0);
                             var o = Date.now();
-                            return H.md5File(e).then(function(t) {
+                            return K.md5File(e).then(function(t) {
                                 function a(e, t, a) {
                                     var n, i = angular.extend(c.getBaseRequest(), {
                                         ClientMediaId: f.now(),
@@ -1512,7 +1380,7 @@ function(e, exports, t) { !
                                         AESKey: d.AESKey,
                                         Signature: d.Signature
                                     }),
-                                    o = E(e.ext);
+                                    o = G(e.ext);
                                     switch (o) {
                                     case r.MSGTYPE_IMAGE:
                                         n = "pic";
@@ -1534,7 +1402,7 @@ function(e, exports, t) { !
                                     };
                                     e._uploadParams = s,
                                     e._uploadmediarequestBase = i,
-                                    t ? (H.trigger("fileQueued", e), H.trigger("uploadSuccess", e, a), H.skipFile(e)) : (e._checked = !0, H.addFiles(e))
+                                    t ? (K.trigger("fileQueued", e), K.trigger("uploadSuccess", e, a), K.skipFile(e)) : (e._checked = !0, K.addFiles(e))
                                 }
                                 var s = Date.now() - o,
                                 l = s / e.size * 1024 * 1024;
@@ -1583,16 +1451,18 @@ function(e, exports, t) { !
                         }).on("uploadProgress", function(e, t) {
                             e.onProgress.call(e, t)
                         }).on("uploadFinished", function() {
-                            H.reset()
+                            K.reset()
                         }).on("uploadSuccess", function(e, t) {
                             e.onSuccess.call(e, t)
                         }).on("uploadError", function(e, t) {
-                            e.onError.call(e, t)
+                            e.onError.call(e, t),
+                            h.report(h.UPLOAD_FAIL_COUNT, 1)
                         }).on("error", function(e) {
                             p.report(p.ReportType.uploaderError, {
                                 text: "WebUploader 出错",
                                 type: e
-                            })
+                            }),
+                            h.report(h.UPLOAD_FAIL_COUNT, 1)
                         })
                     } catch(e) {
                         a.noflash = !0,
@@ -1603,22 +1473,22 @@ function(e, exports, t) { !
                     }
                 })
             }
-            var I, P, U = document.getElementById("caretPosHelper"),
-            A = 0,
+            var P, U, A = document.getElementById("caretPosHelper"),
             F = 0,
-            V = document.getElementById("editArea"),
-            x = V.parentNode,
-            D = f.getShareObject("editingContents"),
+            V = 0,
+            x = document.getElementById("editArea"),
+            D = x.parentNode,
+            O = f.getShareObject("editingContents"),
             R = !1,
             j = !1,
-            O = null;
-            $(V).on("input", function() {
-                M()
+            q = null;
+            $(x).on("input", function() {
+                v()
             }).on("click", function() {
-                M()
+                v()
             }).on("paste", function(e) {
                 var t = l.setSendFileUsername(l.getCurrentUserName());
-                if (O && clearTimeout(O), j = !0, O = setTimeout(function() {
+                if (q && clearTimeout(q), j = !0, q = setTimeout(function() {
                     j = !1
                 },
                 100), !t) return alert(_("599d8df")),
@@ -1633,17 +1503,17 @@ function(e, exports, t) { !
             a.isDisabled = !a.userName,
             a.isMacOS = navigator.userAgent.toUpperCase().indexOf("MAC OS") > -1,
             a.editAreaCtn = "";
-            var q;
+            var L;
             a.$on("$destroy", function() {
-                q && (D[q] = V.innerHTML)
+                L && (O[L] = x.innerHTML)
             }),
             a.$watch(function() {
                 return l.getCurrentUserName()
             },
             function(e, t) {
-                t && e != t && (D[t] = V.innerHTML),
-                q = e,
-                T(D[e])
+                t && e != t && (O[t] = x.innerHTML),
+                L = e,
+                N(O[e])
             }),
             a.showEmojiPanel = function(e) {
                 u.toggleOpen({
@@ -1659,10 +1529,10 @@ function(e, exports, t) { !
                 }),
                 e.preventDefault()
             };
-            var L;
+            var Y;
             a.sendClick = function(e) {
                 var t = l.setSendFileUsername(l.getCurrentUserName());
-                if (!t) return (!L || e.timeStamp - L > 30) && (L = e.timeStamp, alert(_("599d8df"))),
+                if (!t) return (!Y || e.timeStamp - Y > 30) && (Y = e.timeStamp, alert(_("599d8df"))),
                 e.preventDefault(),
                 e.stopPropagation(),
                 !1
@@ -1675,48 +1545,49 @@ function(e, exports, t) { !
                             MsgType: r.MSGTYPE_IMAGE,
                             Type: r.MSGTYPE_IMAGE
                         });
-                        e = S(t),
+                        e = T(t),
                         d.upload(JSON.stringify(t), function(t) { ! t.BaseResponse || t.BaseResponse && 0 != t.BaseResponse.Ret ? (alert(_("76a7e04")), e.close()) : e.update(r.API_webwxpreview + "?fun=preview&mediaid=" + t.MediaId, t.MediaId)
                         })
                     }
-                }) : "Win64" == navigator.platform && f.browser.msie ? alert(_("82cf63d")) : confirm(_("112a5c0")) && d.install()
+                }) : "Win64" == navigator.platform && f.browser.msie ? alert(_("82cf63d")) : confirm(_("112a5c0")) && d.install(),
+                h.report(h.CLICK_SNAPSHOT_COUNT, 1)
             };
-            var Y, B;
+            var B, H;
             a.editAreaKeyup = function(e) {
-                if (MMDEV && e.keyCode == r.KEYCODE_NUM2 && "@" == b(1)) {
+                if (MMDEV && e.keyCode == r.KEYCODE_NUM2 && "@" == C(1)) {
                     var t = l.getCurrentUserName();
                     if (!f.isRoomContact(t)) return;
-                    w(),
-                    B = function() {
-                        Y = null,
-                        B = null;
+                    S(),
+                    H = function() {
+                        B = null,
+                        H = null;
                         var e = s.getChatRoomMembersContact(t, "withoutMe");
-                        M(),
+                        v(),
                         u.open({
                             templateUrl: "editAreaContactPanel.html",
                             controller: "editAreaContactListController",
-                            left: A,
-                            top: F,
+                            left: F,
+                            top: V,
                             scope: {
                                 chatRoomUserName: t,
                                 memberList: angular.copy(e),
                                 insertContactToEditArea: a.insertToEditArea
                             },
                             autoFoucs: !1,
-                            container: angular.element(x)
+                            container: angular.element(D)
                         })
                     },
-                    !Y && B && B(),
-                    clearTimeout(Y),
-                    Y = setTimeout(function() {
-                        B && B(),
-                        Y = null
+                    !B && H && H(),
+                    clearTimeout(B),
+                    B = setTimeout(function() {
+                        H && H(),
+                        B = null
                     },
                     300)
                 }
             },
             a.editAreaKeydown = function(e) {
-                if (h(), Y) return void e.preventDefault();
+                if (M(), B) return void e.preventDefault();
                 var t = e.keyCode;
                 if (t == r.KEYCODE_ENTER) {
                     if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) {
@@ -1729,7 +1600,7 @@ function(e, exports, t) { !
                             i || (n += n)
                         }
                         a.insertToEditArea(n, !0),
-                        V.scrollTop = V.scrollHeight
+                        x.scrollTop = x.scrollHeight
                     } else a.sendTextMessage();
                     e.preventDefault()
                 }
@@ -1737,11 +1608,11 @@ function(e, exports, t) { !
                 (t >= 65 && t <= 111 || t >= 186 && t <= 222) && u.close()
             },
             a.editAreaBlur = function(e) {
-                B = null,
+                H = null,
                 m.change("sender:active", !1)
             },
             a.editAreaClick = function(e) {
-                w()
+                S()
             },
             a.sendTextMessage = function() {
                 if (u.close(), !a.editAreaCtn.replace(/<br\/?>/g, "").match(/^\s*$/)) {
@@ -1751,17 +1622,17 @@ function(e, exports, t) { !
                     });
                     l.appendMessage(e),
                     l.sendMessage(e),
-                    D[l.getCurrentUserName()] = "",
+                    O[l.getCurrentUserName()] = "",
                     a.editAreaCtn = ""
                 }
             },
             a.$on("root:quoteMsg", function(e, t) {
-                T(t + (V.innerHTML.replace("<br>", "") ? V.innerHTML : "<br>")),
-                V.scrollTop = 9999
+                N(t + (x.innerHTML.replace("<br>", "") ? x.innerHTML : "<br>")),
+                x.scrollTop = 9999
             }),
             a.insertToEditArea = function(e, t) {
-                C(e, t),
-                a.editAreaCtn = V.innerHTML
+                w(e, t),
+                a.editAreaCtn = x.innerHTML
             },
             a.sendTuzkiEmoji = function(e, t) {
                 var a = l.createMessage({
@@ -1775,24 +1646,24 @@ function(e, exports, t) { !
                 l.sendMessage(a)
             },
             a.sendGif = function(e) {};
-            var H, K = 20,
-            W = 25,
-            z = {
+            var K, W = 20,
+            z = 25,
+            Q = {
                 bmp: 1,
                 png: 1,
                 jpeg: 1,
                 jpg: 1,
                 gif: 0
             },
-            Q = function(e) {
-                H.cancelFile(e.MMFileId),
+            J = function(e) {
+                K.cancelFile(e.MMFileId),
                 e.MMFileStatus = r.MM_SEND_FILE_STATUS_CANCEL,
                 e.MMStatus = r.MSG_SEND_STATUS_READY
             },
-            J = function() {},
-            X = {
+            X = function() {},
+            Z = {
                 onQueued: function() {
-                    if ((N(this.ext) || "gif" == this.ext.toLowerCase()) && this.ToUserName != l.getCurrentUserName() && (f.reportSendState("sendImageWrong"), p.report(p.ReportType.sendError, {
+                    if ((E(this.ext) || "gif" == this.ext.toLowerCase()) && this.ToUserName != l.getCurrentUserName() && (f.reportSendState("sendImageWrong"), p.report(p.ReportType.sendError, {
                         type: "sendImageWrong",
                         browser: f.browser.msie ? "ie" : "other"
                     })), "gif" == this.ext.toLowerCase()) return this.MMSendMsg = l.createMessage({
@@ -1802,14 +1673,14 @@ function(e, exports, t) { !
                     }),
                     void
                     function(e) {
-                        H.makeThumb(e, function(t, a) {
+                        K.makeThumb(e, function(t, a) {
                             a && (e.MMSendMsg.MMThumbSrc = a),
                             l.appendMessage(e.MMSendMsg)
                         },
                         1, 1)
                     } (this);
-                    if (N(this.ext)) {
-                        var t = E(this.ext);
+                    if (E(this.ext)) {
+                        var t = G(this.ext);
                         this.MMSendMsg = l.createMessage({
                             ToUserName: this.ToUserName,
                             MsgType: t,
@@ -1819,11 +1690,11 @@ function(e, exports, t) { !
                             MMFileExt: this.ext,
                             MMUploadProgress: 0,
                             MMFileStatus: r.MM_SEND_FILE_STATUS_QUEUED,
-                            MMCancelUploadFileFunc: Q
+                            MMCancelUploadFileFunc: J
                         }),
                         function(t) {
                             t.MMSendMsg.MMThumbSrc = "",
-                            H.makeThumb(t, function(a, n) { ! a && n || p.report(p.ReportType.uploaderError, {
+                            K.makeThumb(t, function(a, n) { ! a && n || p.report(p.ReportType.uploaderError, {
                                     text: "创建缩略图失败",
                                     fileName: t.MMSendMsg.MMFileExt,
                                     fileSize: t.MMSendMsg.FileSize
@@ -1865,14 +1736,14 @@ function(e, exports, t) { !
                     })
                 }
             },
-            Z = {
+            ee = {
                 onQueued: function() {
                     var e = l.createMessage({
                         ToUserName: this.ToUserName,
                         MsgType: r.MSGTYPE_IMAGE,
                         Type: r.MSGTYPE_IMAGE
                     });
-                    this._uploadPreviewUpdate = S(e).update
+                    this._uploadPreviewUpdate = T(e).update
                 },
                 onSuccess: function(e) {
                     0 == e.BaseResponse.Ret ? this._uploadPreviewUpdate(r.API_webwxpreview + "?fun=preview&mediaid=" + e.MediaId, e.MediaId) : this.onError("Ret: " + e.BaseResponse.Ret)
@@ -1933,15 +1804,15 @@ function(e, exports, t) { !
 function(e, exports) { !
     function() {
         "use strict";
-        angular.module("Controllers").controller("createChatroomController", ["$rootScope", "$scope", "$timeout", "$state", "$log", "$document", "chatFactory", "contactFactory", "appFactory", "chatroomFactory", "confFactory", "mmpop", "ngDialog", "utilFactory", "stateManageService", "accountFactory", function(e, t, a, n, i, o, r, c, s, l, d, f, u, m, g, p) {
+        angular.module("Controllers").controller("createChatroomController", ["$rootScope", "$scope", "$timeout", "$state", "$log", "$document", "chatFactory", "contactFactory", "appFactory", "chatroomFactory", "confFactory", "mmpop", "ngDialog", "utilFactory", "stateManageService", "accountFactory", "monitorService", function(e, t, a, n, i, o, r, c, s, l, d, f, u, m, g, p, h) {
             a(function() {
-                t.ngDialogData.isCreate && (h = []),
+                t.ngDialogData.isCreate && (M = []),
                 t.allContacts = c.pickContacts(["star", "friend"], {
                     star: {
-                        filterContacts: h
+                        filterContacts: M
                     },
                     friend: {
-                        filterContacts: h,
+                        filterContacts: M,
                         isWithoutStar: !0,
                         isWithoutBrand: !0
                     }
@@ -1956,7 +1827,7 @@ function(e, exports) { !
             },
             100),
             t.selectedUsers = t.ngDialogData.initSelectedContacts || [];
-            var h = t.ngDialogData.isCreate ? {} : l.getFilterContacts();
+            var M = t.ngDialogData.isCreate ? {} : l.getFilterContacts();
             t.pickConfig = {
                 types: ["star", "friend"],
                 opt: {
@@ -1966,7 +1837,7 @@ function(e, exports) { !
                         isWithoutBrand: !0
                     },
                     all: {
-                        filterContacts: h
+                        filterContacts: M
                     }
                 }
             },
@@ -1977,7 +1848,7 @@ function(e, exports) { !
                     a.push(e.UserName)
                 }),
                 l.addMember(e.UserName, a.join(","), function(e) {
-                    e.BaseResponse && 0 != e.BaseResponse.Ret && e.BaseResponse.Ret != -2013 && u.openConfirm({
+                    e.BaseResponse && 0 != e.BaseResponse.Ret && e.BaseResponse.Ret != -2013 && (u.openConfirm({
                         className: "default ",
                         templateUrl: "comfirmTips.html",
                         controller: ["$scope", function(t) {
@@ -1987,9 +1858,10 @@ function(e, exports) { !
                                 t.closeThisDialog()
                             }
                         }]
-                    })
+                    }), h.report(h.INVITE_TO_CHAT_ROOM_FAIL_COUNT, 1))
                 }),
-                t.closeThisDialog()
+                t.closeThisDialog(),
+                h.report(h.INVITE_TO_CHAT_ROOM_COUNT, 1)
             },
             t.create = function() {
                 var e = [];
@@ -2005,7 +1877,7 @@ function(e, exports) { !
                 }), l.create(e).then(function(e) {
                     e.BaseResponse && 0 == e.BaseResponse.Ret || e.BaseResponse.Ret == -2013 ? n.go("chat", {
                         userName: e.ChatRoomName
-                    }) : u.openConfirm({
+                    }) : (u.openConfirm({
                         className: "default ",
                         templateUrl: "comfirmTips.html",
                         controller: ["$scope", function(t) {
@@ -2015,7 +1887,7 @@ function(e, exports) { !
                                 t.closeThisDialog()
                             }
                         }]
-                    })
+                    }), h.report(h.CREATE_CHAT_ROOM_FAIL_COUNT, 1))
                 },
                 function(e) {
                     u.openConfirm({
@@ -2028,8 +1900,9 @@ function(e, exports) { !
                                 t.closeThisDialog()
                             }
                         }]
-                    })
-                }), void t.closeThisDialog())
+                    }),
+                    h.report(h.CREATE_CHAT_ROOM_FAIL_COUNT, 1)
+                }), t.closeThisDialog(), void h.report(h.CREATE_CHAT_ROOM_COUNT, 1))
             },
             t.selectChatroom = function(e) {
                 n.go("chat", {
@@ -2333,7 +2206,7 @@ function(e, exports) { !
 function(e, exports) { !
     function() {
         "use strict";
-        angular.module("Controllers").controller("systemMenuController", ["$rootScope", "$scope", "$timeout", "ngDialog", "loginFactory", "confFactory", "accountFactory", "utilFactory", "oplogFactory", function(e, t, a, n, i, o, r, c, s) {
+        angular.module("Controllers").controller("systemMenuController", ["$rootScope", "$scope", "$timeout", "ngDialog", "loginFactory", "confFactory", "accountFactory", "utilFactory", "monitorService", "oplogFactory", function(e, t, a, n, i, o, r, c, s, l) {
             t.createChatroom = function() {
                 n.open({
                     templateUrl: "createChatroom.html",
@@ -2377,8 +2250,9 @@ function(e, exports) { !
                         e.send = function() {
                             var t = "【新版web微信】【" + navigator.userAgent.toLowerCase() + "】" + e.content;
                             t = c.htmlEncode(t),
-                            s.feedback(t),
-                            e.closeThisDialog()
+                            l.feedback(t),
+                            e.closeThisDialog(),
+                            s.report(s.FEEDBACK_COUNT, 1)
                         }
                     }],
                     className: "default"
@@ -3852,7 +3726,7 @@ function(e, exports) { !
                     var e = this;
                     return 0 == this.MemberList.length && 0 != this.ContactFlag || (e.MMInChatroom === !1 || e.MMInChatroom === !0 ? e.MMInChatroom : (angular.forEach(this.MemberList, function(t) {
                         if (t.UserName == o.getUserInfo().UserName) return void(e.MMInChatroom = !0)
-                    }), e.MMInChatroom = e.MMInChatroom || !1, e.MMInChatroom));
+                    }), e.MMInChatroom = e.MMInChatroom || !1, e.MMInChatroom))
                 },
                 isReadOnlyContact: function() {
                     return E.indexOf(this.UserName) > -1
@@ -3863,14 +3737,14 @@ function(e, exports) { !
                     if (c.isRoomContact(t.UserName)) if (a = t.RemarkName || t.NickName, !a && t.MemberList) for (var n = 0, i = t.MemberList.length; n < i && n < 10; ++n) {
                         a.length > 0 && (a += ", ");
                         var o = t.MemberList[n],
-                        r = k.getContact(o.UserName);
+                        r = I.getContact(o.UserName);
                         a += r && r.RemarkName || r && r.NickName || o.NickName
                     } else a || (a = t.UserName);
                     else a = t.RemarkName || e && e != t.UserName && t.getMemberDisplayName(e) || t.NickName;
                     return a
                 },
                 getMemberDisplayName: function(e) {
-                    k.getChatroomIdByUserName(e);
+                    I.getChatroomIdByUserName(e);
                     return e && y[e] ? y[e][this.UserName] : ""
                 },
                 chatroomCanSearch: function(e) {
@@ -3878,7 +3752,7 @@ function(e, exports) { !
                         if (this.canSearch(e)) return !0;
                         for (var t = 0, a = this.MemberList.length; t < a; t++) {
                             var n = this.MemberList[t].UserName,
-                            i = k.getContact(n);
+                            i = I.getContact(n);
                             if (i && i.canSearch(e)) return !0
                         }
                     }
@@ -3902,7 +3776,7 @@ function(e, exports) { !
                     e && angular.extend(this, e)
                 }
             },
-            k = {
+            I = {
                 contactChangeFlag: "",
                 setCurrentContact: function(e) {
                     u = e
@@ -4336,7 +4210,7 @@ function(e, exports) { !
                     }).success(function(e) {}).error(function(e) {})
                 }
             };
-            return k
+            return I
         }])
     } ()
 },
@@ -6171,7 +6045,7 @@ function(e, exports) { !
                         data: i()
                     })
                 },
-                !0), k = !0, f()) : e.fullTiming ? p({
+                !0), I = !0, f()) : e.fullTiming ? p({
                     Type: 1,
                     Text: JSON.stringify({
                         type: N.timing,
@@ -6238,7 +6112,7 @@ function(e, exports) { !
                         type: N.runtime,
                         data: w
                     }),
-                    !k && C.push({
+                    !I && C.push({
                         type: N.timing,
                         data: {
                             fullTiming: i()
@@ -6335,17 +6209,202 @@ function(e, exports) { !
             l(),
             u();
             var G = {},
-            k = !1;
+            I = !1;
             window._errorHandler = function(e) {
                 d(N.jsError, e)
             };
-            var I = {
+            var k = {
                 report: d,
                 ReportType: N
             };
-            return I
+            return k
         }])
     } ()
+},
+function(e, exports, t) { !
+    function() {
+        "use strict";
+        angular.module("Services").factory("monitorService", ["$http", "$rootScope", "confFactory", "accountFactory", function(e, a, n, i) {
+            function o(e, t, a) {
+                a || (a = 0),
+                r(c.ID, e, t, a)
+            }
+            var r = t(309),
+            c = {
+                report: o,
+                ID: 69373,
+                PV: 0,
+                FEEDBACK_COUNT: 1,
+                EXCEPTION_COUNT: 2,
+                INIT_EXCEPTION_COUNT: 3,
+                QRCODE_EXCEPTION_COUNT: 4,
+                AUTH_FAIL_COUNT: 5,
+                ASSOCIATION_AUTH_COUNT: 6,
+                ASSOCIATION_AUTH_FAIL_COUNT: 7,
+                SEND_MSG_COUNT: 8,
+                UPLOAD_COUNT: 9,
+                UPLOAD_FAIL_COUNT: 10,
+                CREATE_CHAT_ROOM_COUNT: 11,
+                CREATE_CHAT_ROOM_FAIL_COUNT: 12,
+                INVITE_TO_CHAT_ROOM_COUNT: 13,
+                INVITE_TO_CHAT_ROOM_FAIL_COUNT: 14,
+                CLICK_SNAPSHOT_COUNT: 15
+            };
+            return c
+        }])
+    } ()
+},
+function(e, exports, t) { !
+    function(t, a) {
+        e.exports = a()
+    } (this, function() {
+        return function(e) {
+            function t(n) {
+                if (a[n]) return a[n].exports;
+                var i = a[n] = {
+                    i: n,
+                    l: !1,
+                    exports: {}
+                };
+                return e[n].call(i.exports, i, i.exports, t),
+                i.l = !0,
+                i.exports
+            }
+            var a = {};
+            return t.m = e,
+            t.c = a,
+            t.d = function(e, a, n) {
+                t.o(e, a) || Object.defineProperty(e, a, {
+                    configurable: !1,
+                    enumerable: !0,
+                    get: n
+                })
+            },
+            t.n = function(e) {
+                var a = e && e.__esModule ?
+                function() {
+                    return e.
+                default
+                }:
+                function() {
+                    return e
+                };
+                return t.d(a, "a", a),
+                a
+            },
+            t.o = function(e, t) {
+                return Object.prototype.hasOwnProperty.call(e, t)
+            },
+            t.p = "",
+            t(t.s = 0)
+        } ([function(e, t, a) {
+            "use strict";
+            function n(e) {
+                return e && e.__esModule ? e : {
+                default:
+                    e
+                }
+            }
+            function i(e, t, a) {
+                var n = arguments.length > 3 && void 0 !== arguments[3] ? arguments[3] : 0,
+                i = e + "-" + t,
+                o = l.get(i);
+                void 0 === o ? l.set(i, a) : l.set(i, o + a);
+                var r = d.get(i);
+                void 0 === r && (r = (0, s.
+            default)(function() {
+                    var a = l.get(i);
+                    if (void 0 !== a) {
+                        var n = "https://support.weixin.qq.com/cgi-bin/mmsupport-bin/reportforweb?rid=" + e + "&rkey=" + t + "&rvalue=" + a;
+                        (new Image).src = n,
+                        l.clear(i),
+                        d.clear(i)
+                    }
+                },
+                n, {
+                    leading:
+                    !1
+                }), d.set(i, r)),
+                r()
+            }
+            Object.defineProperty(t, "__esModule", {
+                value: !0
+            });
+            var o = a(1),
+            r = n(o),
+            c = a(2),
+            s = n(c),
+            l = (0, r.
+        default)(),
+            d = (0, r.
+        default)();
+            t.
+        default = i,
+            e.exports = t.
+        default
+        },
+        function(e, t, a) {
+            "use strict";
+            Object.defineProperty(t, "__esModule", {
+                value:
+                !0
+            });
+            var n = function() {
+                var e = {},
+                t = function(t) {
+                    return e[t]
+                },
+                a = function(t, a) {
+                    e[t] = a
+                },
+                n = function(t) {
+                    void 0 === t ? e = {} : e[t] = void 0
+                };
+                return {
+                    get: t,
+                    set: a,
+                    clear: n
+                }
+            };
+            t.
+        default = n,
+            e.exports = t.
+        default
+        },
+        function(e, t, a) {
+            "use strict";
+            function n(e, t) {
+                var a = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2]:
+                {},
+                n = void 0,
+                i = void 0,
+                o = void 0,
+                r = 0,
+                c = function() {
+                    r = a.leading === !1 ? 0 : (new Date).getTime(),
+                    n = null,
+                    e.apply(i, o),
+                    n || (i = o = null)
+                },
+                s = function() {
+                    var s = (new Date).getTime();
+                    r || a.leading !== !1 || (r = s);
+                    var l = t - (s - r);
+                    i = this,
+                    o = arguments,
+                    l <= 0 || l > t ? (n && (clearTimeout(n), n = null), r = s, e.apply(i, o), n || (i = o = null)) : n || a.trailing === !1 || (n = setTimeout(c, l))
+                };
+                return s
+            }
+            Object.defineProperty(t, "__esModule", {
+                value: !0
+            }),
+            t.
+        default = n,
+            e.exports = t.
+        default
+        }])
+    })
 },
 function(e, exports) { !
     function() {
@@ -6376,7 +6435,8 @@ function(e, exports) { !
                 var l = n.data,
                 d = n.config,
                 f = d.MMRetry,
-                u = "undefined" == typeof f.count ? 3 : f.count,
+                u = "undefined" == typeof f.count ? 3:
+                f.count,
                 m = f.timeout || 15e3,
                 g = f.serial,
                 p = [],
@@ -7162,7 +7222,7 @@ function(e, exports) {
                     }).on("mouseup", function() {
                         m.off("mousemove", d),
                         g.css("display", "block")
-                    }).on(k, function(e) {
+                    }).on(I, function(e) {
                         var t, a = e.originalEvent;
                         "mousewheel" != a.type && "DOMMouseScroll" != a.type || (t = a.wheelDelta ? a.wheelDelta / 120 : -(a.detail || 0) / 3),
                         void 0 !== t && (s(G ? {
@@ -7262,7 +7322,7 @@ function(e, exports) {
                 N = .8 * M,
                 E = {},
                 G = void 0 !== document.mozHidden,
-                k = G ? "DOMMouseScroll" : "mousewheel";
+                I = G ? "DOMMouseScroll" : "mousewheel";
                 m.on("click", function(e) {
                     e.stopPropagation()
                 }),
@@ -8500,6 +8560,25 @@ function(e, exports) {
         return n
     }])
 },
+function(e, exports) {
+    angular.module("Directives").directive("mmError", ["$parse", function(e) {
+        return {
+            restrict: "A",
+            compile: function(t, a) {
+                var n = e(a.mmError);
+                return function(e, t, a) {
+                    t.on("error", function(t) {
+                        e.$apply(function() {
+                            n(e, {
+                                $event: t
+                            })
+                        })
+                    })
+                }
+            }
+        }
+    }])
+},
 function(e, exports, t) { !
     function(e, a, n) {
         "use strict";
@@ -8523,7 +8602,7 @@ function(e, exports, t) { !
         }).run(["$rootScope", "ngClip", function(n, i) {
             function o() {
                 t.e(4, function(require) {
-                    var e = t(337);
+                    var e = t(340);
                     e.config(a.extend(r, i.config || {}))
                 })
             }
@@ -8546,7 +8625,7 @@ function(e, exports, t) { !
                 restrict: "A",
                 link: function(e, n, i) {
                     t.e(4, function(require) {
-                        var o = t(337);
+                        var o = t(340);
                         if (o.isFlashUnusable()) return void n.bind("click", function(t) {
                             e.$apply(e.clipClickFallback({
                                 $event: t,
@@ -8627,4 +8706,4 @@ function(e, exports) { !
         }])
     } ()
 }]);
-/* vhtml-webpack-plugin version: 0.1.17 */
+/* vhtml-webpack-plugin version: 0.1.18 */
