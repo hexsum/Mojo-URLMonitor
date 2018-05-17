@@ -135,9 +135,7 @@ function(e, exports, t) {
             a.debugEnabled(!0),
             o.setPath(window.MMSource.copySwfPath),
             t.interceptors.push("httpInterceptor");
-            var r = document.domain.indexOf("qq.com") < 0;
-            r || (document.domain = "qq.com");
-            var c;
+            var r;
             n.state("chat", {
                 url: "",
                 params: {
@@ -200,10 +198,10 @@ function(e, exports, t) {
                     contentView: {
                         templateUrl: "contentRead.html",
                         controller: ["$scope", "$stateParams", "subscribeMsgService", "mmpop", function(e, t, a, n) {
-                            if (t.readItem) c = e.readItem = t.readItem;
+                            if (t.readItem) r = e.readItem = t.readItem;
                             else {
                                 var i = a.getSubscribeMsgs()[0];
-                                e.readItem = c || i && i.MPArticleList[0]
+                                e.readItem = r || i && i.MPArticleList[0]
                             }
                             e.optionMenu = function() {
                                 n.toggleOpen({
@@ -8786,4 +8784,4 @@ function(e, exports) { !
         }])
     } ()
 }]);
-/* vhtml-webpack-plugin version: 0.1.24 */
+/* vhtml-webpack-plugin version: 0.1.38 */
