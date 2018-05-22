@@ -356,7 +356,7 @@ function(e, exports) { !
                     function(e) {
                         return b.start(2e3),
                         e
-                    }).then(G, I)
+                    }).then(G, k)
                 },
                 m.TIMEOUT_SYNC_CHECK))
             }
@@ -391,10 +391,10 @@ function(e, exports) { !
                     E()
                 }
             }
-            function I(e) {
+            function k(e) {
                 E()
             }
-            function k(e) {
+            function I(e) {
                 var t = h.getCookie("last_wxuin") || "",
                 a = parseInt(h.getCookie("login_frequency") || 1);
                 t !== e ? a = 1 : a += 1,
@@ -417,7 +417,7 @@ function(e, exports) { !
                 f.setUin(t.Uin),
                 f.setPassticket(t.Passticket),
                 N(),
-                k(t.Uin)
+                I(t.Uin)
             });
             var U, A;
             t.search = function(e) {
@@ -686,6 +686,7 @@ function(e, exports) { !
                 e.isBrokenNetwork = !1;
                 var s;
                 e.isAssociationLogin && (e.userAvatar = a.getLocalStorage().getItem("userAvatar")),
+                e.showPrivacyTips = /wechat\.com/gi.test(location.host),
                 e.associationLogin = function() {
                     var n = a.getCookie("last_wxuin");
                     e.isWaitingAsConfirm = !0,
@@ -1116,16 +1117,16 @@ function(e, exports, t) { !
             e.$on("mmRepeat:change", function() {
                 G && (T.scrollTop = 99999)
             });
-            var I, k = !0;
+            var k, I = !0;
             e.$watchCollection("chatContent", function(t) {
                 if (t.length > 0 && t[t.length - 1].FromUserName === s.getUserName()) G = !0;
                 else {
-                    if (e.isChangeUserFlag ? (e.isChangeUserFlag = !1, S()) : e.bottomUnreadIndex && e.currentContact ? e.bottomUnreadCount = c.getUnreadMsgsCount(e.currentContact.UserName) : S(), I && clearTimeout(I), I = setTimeout(function() {
-                        k = !0
+                    if (e.isChangeUserFlag ? (e.isChangeUserFlag = !1, S()) : e.bottomUnreadIndex && e.currentContact ? e.bottomUnreadCount = c.getUnreadMsgsCount(e.currentContact.UserName) : S(), k && clearTimeout(k), k = setTimeout(function() {
+                        I = !0
                     },
-                    100), !k) return;
+                    100), !I) return;
                     G = T.scrollTop + T.clientHeight + 260 >= T.scrollHeight,
-                    k = !1
+                    I = !1
                 }
             }),
             e.heightCalc = function(t, a) {
@@ -1321,7 +1322,7 @@ function(e, exports, t) { !
                 };
                 return E(e) ? r.MSGTYPE_IMAGE : t[e.toLowerCase()] ? r.MSGTYPE_VIDEO : r.MSGTYPE_APP
             }
-            function I(e, t) {
+            function k(e, t) {
                 angular.extend(e, {
                     onQueued: X,
                     onProgress: X,
@@ -1330,7 +1331,7 @@ function(e, exports, t) { !
                 },
                 t)
             }
-            function k() {
+            function I() {
                 t.e(3, function(require) {
                     var e = t(284);
                     window.WebUploader = e;
@@ -1358,9 +1359,9 @@ function(e, exports, t) { !
                             !l.getSendFileUsername()) return K.skipFile(e),
                             alert(_("599d8df")),
                             !1;
-                            if (/untitled\d+.png/i.test(e.name) || j) I(e, ee),
+                            if (/untitled\d+.png/i.test(e.name) || j) k(e, ee),
                             e.ToUserName = l.getSendFileUsername();
-                            else if (e.ToUserName = l.getSendFileUsername(), I(e, Z), "gif" !== e.ext.toLowerCase() && !E(e.ext)) {
+                            else if (e.ToUserName = l.getSendFileUsername(), k(e, Z), "gif" !== e.ext.toLowerCase() && !E(e.ext)) {
                                 var t = G(e.ext);
                                 if (t == r.MSGTYPE_VIDEO && e.size >= 1024 * W * 1024) return K.skipFile(e),
                                 void alert(_("9a7dbbc"));
@@ -1778,8 +1779,8 @@ function(e, exports, t) { !
                     alert(_("c5795a7") + e)
                 }
             };
-            window.WebUploader ? k() : e.$on("root:pageInit:success", function() {
-                k()
+            window.WebUploader ? I() : e.$on("root:pageInit:success", function() {
+                I()
             })
         }])
     } ()
@@ -3814,14 +3815,14 @@ function(e, exports) { !
                     if (c.isRoomContact(t.UserName)) if (a = t.RemarkName || t.NickName, !a && t.MemberList) for (var n = 0, i = t.MemberList.length; n < i && n < 10; ++n) {
                         a.length > 0 && (a += ", ");
                         var o = t.MemberList[n],
-                        r = I.getContact(o.UserName);
+                        r = k.getContact(o.UserName);
                         a += r && r.RemarkName || r && r.NickName || o.NickName
                     } else a || (a = t.UserName);
                     else a = t.RemarkName || e && e != t.UserName && t.getMemberDisplayName(e) || t.NickName;
                     return a
                 },
                 getMemberDisplayName: function(e) {
-                    I.getChatroomIdByUserName(e);
+                    k.getChatroomIdByUserName(e);
                     return e && y[e] ? y[e][this.UserName] : ""
                 },
                 chatroomCanSearch: function(e) {
@@ -3829,7 +3830,7 @@ function(e, exports) { !
                         if (this.canSearch(e)) return !0;
                         for (var t = 0, a = this.MemberList.length; t < a; t++) {
                             var n = this.MemberList[t].UserName,
-                            i = I.getContact(n);
+                            i = k.getContact(n);
                             if (i && i.canSearch(e)) return !0
                         }
                     }
@@ -3853,7 +3854,7 @@ function(e, exports) { !
                     e && angular.extend(this, e)
                 }
             },
-            I = {
+            k = {
                 contactChangeFlag: "",
                 setCurrentContact: function(e) {
                     u = e
@@ -4287,7 +4288,7 @@ function(e, exports) { !
                     }).success(function(e) {}).error(function(e) {})
                 }
             };
-            return I
+            return k
         }])
     } ()
 },
@@ -6122,7 +6123,7 @@ function(e, exports) { !
                         data: i()
                     })
                 },
-                !0), I = !0, f()) : e.fullTiming ? p({
+                !0), k = !0, f()) : e.fullTiming ? p({
                     Type: 1,
                     Text: JSON.stringify({
                         type: N.timing,
@@ -6189,7 +6190,7 @@ function(e, exports) { !
                         type: N.runtime,
                         data: w
                     }),
-                    !I && C.push({
+                    !k && C.push({
                         type: N.timing,
                         data: {
                             fullTiming: i()
@@ -6287,15 +6288,15 @@ function(e, exports) { !
             l(),
             u();
             var G = {},
-            I = !1;
+            k = !1;
             window._errorHandler = function(e) {
                 d(N.jsError, e)
             };
-            var k = {
+            var I = {
                 report: d,
                 ReportType: N
             };
-            return k
+            return I
         }])
     } ()
 },
@@ -7300,7 +7301,7 @@ function(e, exports) {
                     }).on("mouseup", function() {
                         m.off("mousemove", d),
                         g.css("display", "block")
-                    }).on(I, function(e) {
+                    }).on(k, function(e) {
                         var t, a = e.originalEvent;
                         "mousewheel" != a.type && "DOMMouseScroll" != a.type || (t = a.wheelDelta ? a.wheelDelta / 120 : -(a.detail || 0) / 3),
                         void 0 !== t && (s(G ? {
@@ -7400,7 +7401,7 @@ function(e, exports) {
                 N = .8 * M,
                 E = {},
                 G = void 0 !== document.mozHidden,
-                I = G ? "DOMMouseScroll" : "mousewheel";
+                k = G ? "DOMMouseScroll" : "mousewheel";
                 m.on("click", function(e) {
                     e.stopPropagation()
                 }),
